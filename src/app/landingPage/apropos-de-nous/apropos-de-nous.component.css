@@ -1,0 +1,18 @@
+.bg-lightMoutard-100 {
+  background-color: var(--lightMotard);
+}
+
+
+@media (min-width: 600px) {
+  .rounded {
+    border-radius: 200px;
+  }
+  
+}
+
+@media (max-width: 600px) {
+  .rounded {
+    border-radius: 100px;
+  }
+
+}

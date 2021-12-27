@@ -1,0 +1,17 @@
+.table-header{
+    @apply grid justify-items-start xl:grid-flow-col lg:grid-flow-col md:grid-flow-col sm:grid-flow-col xl:gap-x-8 lg:gap-x-8 md:gap-6 sm:gap-4  py-3 rounded-3xl font-bold;
+    background-color: var(--lightPink);
+    box-shadow: 4px 3px var(--lightMotard);
+    border:2px solid gray;
+    color: black!important;
+}
+.table-row{
+  @apply grid justify-items-start xl:grid-flow-col lg:grid-flow-col md:grid-flow-col sm:grid-flow-col xl:gap-x-8 lg:gap-x-8 md:gap-6 sm:gap-4 px-5 py-3 rounded-2xl;
+  background-color: var(--lightPink);
+  box-shadow: -4px 0 var(--lightMotard);
+  color: black !important;
+  border:2px solid gray;
+}
+.table-body {
+    margin-top:10px;
+}

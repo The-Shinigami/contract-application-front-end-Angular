@@ -1,0 +1,21 @@
+.card-container {
+    @apply  mx-8 sm:mx-0 md:mx-0 lg:mx-0 xl:mx-0;
+    background-color: var(--lightPink);
+    box-shadow: 5px 5px var(--lightMotard);
+    border-radius: 70px;
+  transition: all 1s ease-in-out;
+}
+.card-container:hover{
+    transform: scale(1.2);
+}
+.card-body{
+   @apply flex flex-wrap justify-center;
+}
+.card-img{
+    @apply w-8/12 p-0 m-0;
+}
+.card-title{
+    @apply text-center text-3xl px-5 pb-5;
+    color: black!important;
+    cursor: default;
+}

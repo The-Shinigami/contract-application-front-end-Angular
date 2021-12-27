@@ -1,0 +1,23 @@
+/* app nav bar */
+:host{
+--lightGray:#EAECEF;
+--lightMotard:#FCD535;
+--darkGray:#0d0c16;
+--textColor:black;
+--lightPink:#FEF6D8;
+}
+
+body {
+  color: var(--textColor);
+  background-color:var(--lightGray);
+}
+.bg-lightGray-100{
+    background-color: var(--lightGray);
+}
+
+.under-line-lightMotard-check {
+  border-bottom: 3px solid var(--lightMotard);
+}
+.under-line-lightMotard:hover{
+  border-bottom: 3px solid var(--lightMotard);
+}
