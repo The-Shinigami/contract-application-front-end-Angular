@@ -7,7 +7,8 @@ import { AProposDeNousComponent } from './landingPage/apropos-de-nous/apropos-de
 import { NotreServiceComponent } from './landingPage/notre-service/notre-service.component';
 import { ListContratsComponent } from './espaceContrat/list-contrats/list-contrats.component';
 import { DetailContratComponent } from './espaceContrat/detail-contrat/detail-contrat.component';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { TrieContratsComponent } from './espaceContrat/trie-contrats/trie-contrats.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,11 +16,13 @@ import { DetailContratComponent } from './espaceContrat/detail-contrat/detail-co
     AProposDeNousComponent,
     NotreServiceComponent,
     ListContratsComponent,
-    DetailContratComponent
+    DetailContratComponent,
+    TrieContratsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
