@@ -1,1 +1,42 @@
-<p>trie-contrats works!</p>
+<div>
+
+  <button class="show-modal">
+    <div class="grid grid-flow-col justify-between border-2 border-black bg-gray-100 px-8 py-1 rounded-3xl">
+      <div class="px-6 font-bold text-black">Trie</div>
+      <div class=""> <img class="w-6 h-5" src="/assets/imgs/up_down.png" alt=""></div>
+    </div>
+  </button>
+  <div class="modal hidden ">
+    <div class="h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
+      <!-- modal -->
+      <div class="bg-white rounded-3xl  shadow-lg w-10/12 md:w-1/3">
+        <!-- modal header -->
+        <div class="px-4 py-2 flex justify-between items-center">
+          <button class="text-black close-modal text-xl font-bold">X</button>
+        </div>
+        <!-- modal body -->
+        <form class="p-3 grid grid-flow-row" [formGroup]="contractForm" (ngSubmit)="onSubmit()">
+          <div>
+            <span class=" font-bold "> date</span> : <input type="radio" value="date" name="choix"
+              formControlName="choix">
+          </div>
+          <div>
+            <span class=" font-bold pr-1"> prix</span> : <input type="radio" value="prix" name="choix"
+              formControlName="choix">
+          </div>
+           <div class="grid grid-flow-col">
+             <div><span class=" font-bold pr-1"> croissance</span> : <input type="radio" value="croi" name="variation"
+              formControlName="variation"></div>
+             <div><span class=" font-bold pr-1"> décroissance</span> : <input type="radio" value="decroi" name="variation"
+              formControlName="variation"></div>
+            
+          </div>
+          <div>
+            <button #valid class="mt-4 border-1 border-black px-4 bg-blue-300 rounded-3xl"
+              [disabled]="contractForm.value.choix ? false:true">valide</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

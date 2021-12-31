@@ -72,6 +72,9 @@ export class AppComponent {
       case "espaceContrat": this.navbarUrls[4].classList.add("under-line-lightMotard-check");
         this.navbarUrls[10].classList.add("under-line-lightMotard-check");
         break;
+      case "espaceClient": this.navbarUrls[5].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[11].classList.add("under-line-lightMotard-check");
+        break;
       default: this.navbarUrls[0].classList.add("under-line-lightMotard-check");
                this.navbarUrls[6].classList.add("under-line-lightMotard-check");
     }

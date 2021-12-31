@@ -1,0 +1,31 @@
+.bg-lightMoutard-100 {
+  background-color: var(--lightMotard);
+}
+.bg-lightPink-100{
+  background-color: var(--lightPink);
+}
+
+@media (min-width: 600px) {
+  .rounded {
+    border-radius: 50px;
+  }
+  .mt-20vh {
+    margin-top: 15vh;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .rounded {
+    border-radius: 25px;
+  }
+.mt-20vh {
+  margin-top: 5vh;
+}
+}
+.shadow-Motard{
+  box-shadow:5px 5px var(--lightMotard) ;
+}
+.shadow-Pink {
+  box-shadow: 5px 5px var(--lightPink);
+}

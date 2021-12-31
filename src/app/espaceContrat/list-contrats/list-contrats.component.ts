@@ -12,7 +12,8 @@ import {
   styleUrls: ['./list-contrats.component.css']
 })
 export class ListContratsComponent implements OnInit {
-  contrats: any;
+  contrats: any = {};
+  sourceContrats: any = {};
   constructor() {
 
   }
@@ -21,7 +22,7 @@ export class ListContratsComponent implements OnInit {
     this.contrats = [{
         date: "2020.1.1",
         numeroContrat: "21587643",
-        idProduit: "505507",
+        idProduit: "2020",
         owner: {
           id: "123556"
         },
@@ -29,13 +30,13 @@ export class ListContratsComponent implements OnInit {
           id: "2545623"
         },
         type: "land contract",
-        cost: "120",
+        cost: 120,
         description: "aaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaa"
       },
       {
         date: "2020.2.1",
         numeroContrat: "21587643",
-        idProduit: "505507",
+        idProduit: "507",
         owner: {
           id: "5555"
         },
@@ -43,13 +44,13 @@ export class ListContratsComponent implements OnInit {
           id: "66666666"
         },
         type: "land contract",
-        cost: "120",
+        cost: 12,
         description: "aaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaa"
       },
       {
         date: "2020.3.1",
         numeroContrat: "21587643",
-        idProduit: "505507",
+        idProduit: "505",
         owner: {
           id: "00000"
         },
@@ -57,10 +58,11 @@ export class ListContratsComponent implements OnInit {
           id: "11111111"
         },
         type: "land contract",
-        cost: "120",
+        cost: 190,
         description: "aaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaa aaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaa aaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaa"
       }
     ]
+    this.sourceContrats = this.contrats;
   }
   ngAfterViewInit() {
     DetailContratComponent.modals.forEach((element: any) => {
@@ -68,10 +70,9 @@ export class ListContratsComponent implements OnInit {
       this.showModal(element);
     });
   }
-  //child to parent
-  // postMessage(messageFromChild: any) {
-  //    this.Counter++;
-  // }
+  setContracts(contrats: any) {
+    this.contrats = contrats;
+  }
   hideModal(element: any) {
     element.querySelector(".close-modal").addEventListener('click', () => {
       element.classList.add("hidden");

@@ -9,6 +9,9 @@ import { ListContratsComponent } from './espaceContrat/list-contrats/list-contra
 import { DetailContratComponent } from './espaceContrat/detail-contrat/detail-contrat.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TrieContratsComponent } from './espaceContrat/trie-contrats/trie-contrats.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ChercherContratComponent } from './espaceContrat/chercher-contrat/chercher-contrat.component';
+import { AuthComponent } from './espaceClient/auth/auth.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,12 +20,15 @@ import { TrieContratsComponent } from './espaceContrat/trie-contrats/trie-contra
     NotreServiceComponent,
     ListContratsComponent,
     DetailContratComponent,
-    TrieContratsComponent
+    TrieContratsComponent,
+    ChercherContratComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+     ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
