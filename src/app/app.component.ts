@@ -16,11 +16,14 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class AppComponent {
   @ViewChild('mobileMenu') mobileMenu: ElementRef<HTMLInputElement> = {} as ElementRef;
   @ViewChild('toggleDarkUrl') toggleDarkUrl: ElementRef<HTMLInputElement> = {} as ElementRef;
-   @ViewChild('logoUrl') logoUrl: ElementRef<HTMLInputElement> = {} as ElementRef;
+  @ViewChild('logoUrl') logoUrl: ElementRef<HTMLInputElement> = {} as ElementRef;
+  @ViewChild('profileMenu') profileMenu: ElementRef<HTMLInputElement> = {} as ElementRef;
+
   @HostBinding("style.--lightGray") 
   lighitGray: String = '';
   @HostBinding("style.--textColor") 
   textColor: String = '';
+
   title = 'ContratProjet';
   navbarUrls: any; 
   cssColors: any = {
@@ -51,11 +54,20 @@ export class AppComponent {
     //add under ligne when the acess is from the link directly
     this.addUnderLigneAcessFromUrl(window.location.href.replace("http://"+window.location.host+"/",""));
   }
+
   toggleMobileMenu() {
     this.mobileMenu.nativeElement.classList.toggle("hidden");
   }
   toggleUnderLigne(choix: String) {  
     this.route.navigate([choix]);
+    //remove  under lign from all navbar elements
+        for (let index = 0; index < this.navbarUrls.length; index++) {
+          this.navbarUrls[index].classList.remove("under-line-lightMotard-check");
+        }
+    if (choix.includes("espaceClient")) {
+       this.navbarUrls[5].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[11].classList.add("under-line-lightMotard-check");
+    }
   }
    
   addUnderLigneAcessFromUrl(Url: String) {
@@ -73,6 +85,9 @@ export class AppComponent {
         this.navbarUrls[10].classList.add("under-line-lightMotard-check");
         break;
       case "espaceClient": this.navbarUrls[5].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[11].classList.add("under-line-lightMotard-check");
+        break;
+      case "espaceClientProfil": this.navbarUrls[5].classList.add("under-line-lightMotard-check");
         this.navbarUrls[11].classList.add("under-line-lightMotard-check");
         break;
       default: this.navbarUrls[0].classList.add("under-line-lightMotard-check");
@@ -101,5 +116,11 @@ export class AppComponent {
     }
       
    
+  }
+  toggleProfileMenu() {
+    ['ease-out', 'duration-100', 'opacity-100', 'scale-100'].map(
+      c => this.profileMenu.nativeElement.classList.toggle(c));
+    ['ease-in', 'duration-75', 'opacity-0', 'scale-95'].map(
+      c => this.profileMenu.nativeElement.classList.toggle(c));
   }
 }

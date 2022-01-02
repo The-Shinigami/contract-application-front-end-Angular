@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -8,14 +7,15 @@ export class GoogleSigninService {
   public authInstance: gapi.auth2.GoogleAuth;
   public error: string;
   public user: gapi.auth2.GoogleUser;
+
+ 
+
+
   constructor() {
     this.ngOnInit();
   }
    async ngOnInit() {
-    // this.signInService.observable().subscribe(user => {
-    //   this.user = user;
-    //   this.ref.detectChanges()
-    // })
+
     if (await this.checkIfUserAuthenticated()) {
       this.user = this.authInstance.currentUser.get();
     }
@@ -69,6 +69,6 @@ export class GoogleSigninService {
     }  
   }
 
-
+ 
 
 }

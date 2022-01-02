@@ -12,6 +12,7 @@ import { TrieContratsComponent } from './espaceContrat/trie-contrats/trie-contra
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChercherContratComponent } from './espaceContrat/chercher-contrat/chercher-contrat.component';
 import { AuthComponent } from './espaceClient/auth/auth.component';
+import { ProfilComponent } from './espaceClient/profil/profil.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { AuthComponent } from './espaceClient/auth/auth.component';
     DetailContratComponent,
     TrieContratsComponent,
     ChercherContratComponent,
-    AuthComponent
+    AuthComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
