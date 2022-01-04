@@ -6,13 +6,14 @@ import { NotreServiceComponent } from './landingPage/notre-service/notre-service
 import { ListContratsComponent } from './espaceContrat/list-contrats/list-contrats.component';
 import { AuthComponent } from './espaceClient/auth/auth.component';
 import { ProfilComponent } from './espaceClient/profil/profil.component';
+import { AuthGuardService } from './Services/authguard/auth-guard.service';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'aProposDeNous', pathMatch: 'full', component: AProposDeNousComponent }, 
   { path: 'notreService', pathMatch: 'full', component: NotreServiceComponent },
   { path: 'espaceContrat', pathMatch: 'full', component: ListContratsComponent },
   { path: 'espaceClient', pathMatch: 'full', component: AuthComponent },
-   { path: 'espaceClientProfil', pathMatch: 'full', component:  ProfilComponent },
+   { path: 'espaceClientProfil',canActivate: [AuthGuardService], pathMatch: 'full', component:  ProfilComponent },
 ];
 
 @NgModule({

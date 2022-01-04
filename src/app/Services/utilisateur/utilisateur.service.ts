@@ -6,10 +6,10 @@ import { Injectable } from '@angular/core';
 export class UtilisateurService {
   private isLogged = false;
   private role: string;
-  private user: {};
+  private user: any;
   constructor() { }
   
-  public setUser(user :{}) {
+  public setUser(user :any) {
     this.user = user;
   }
     public getUser() {

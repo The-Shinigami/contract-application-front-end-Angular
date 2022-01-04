@@ -18,7 +18,7 @@
                 <span class="font-bold ">Date : </span>{{childContrat.date}}
               </div>
               <div>
-                <span class="font-bold ">Contrat N° : </span>{{childContrat.numeroContrat}}
+                <span class="font-bold ">Contrat N° : </span>childContrat.numeroContrat
               </div>
             </div>
           </div>
@@ -36,19 +36,19 @@
                     <span class="font-bold">Identifiant </span>
                   </div>
                   <div>
-                    {{childContrat.owner.id}}</div>
+                    {{childContrat.ownerLand}}</div>
                   <div>
-                    {{childContrat.bayer.id}}</div>
+                    {{childContrat.buyerLand}}</div>
                 </div>
               </div>
               <div></div>
             </div>
           </div>
           <div class="grid grid-flow-row justify-start">
-            <div class="text-left"> <span class="font-bold">Type : </span> {{childContrat.type}}</div>
+            <div class="text-left"> <span class="font-bold">Type : </span> {{childContrat.typePro}}</div>
             <div class="text-left"><span class="font-bold">Cost : </span> {{childContrat.cost}}</div>
              <div class="text-left"><span class="font-bold">Description: </span></div>
-             <div class="text-left">{{childContrat.description}}</div>
+             <div class="text-left">{{childContrat.desc}}</div>
              
           </div>
         </div>

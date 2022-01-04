@@ -29,3 +29,7 @@
 .shadow-Pink {
   box-shadow: 5px 5px var(--lightPink);
 }
+
+.bg-alert{
+  background-color: rgb(253, 154, 154);
+}

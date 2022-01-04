@@ -12,11 +12,11 @@
     <div class="sm:text-start xs:text-start xl:text-center md:text-center w-32">Plus de details</div>
   </div>
 
-  <div class="table-body">
+  <div class="table-body"  *ngIf="contrats != null">
        <div class="table-row" *ngFor="let contrat of contrats">
       <span class="sm:text-start xs:text-start xl:text-center md:text-center w-32">{{contrat["date"]}}</span>
-      <span class="sm:text-start xs:text-start xl:text-center md:text-center w-40" >{{contrat["numeroContrat"]}}</span>
-      <span class="sm:text-start xs:text-start xl:text-center md:text-center w-44">{{contrat["idProduit"]}}</span>
+      <span class="sm:text-start xs:text-start xl:text-center md:text-center w-40" >contrat["numeroContrat"]</span>
+      <span class="sm:text-start xs:text-start xl:text-center md:text-center w-44">contrat["idProduit"]</span>
       <span class="sm:text-start xs:text-start xl:text-center md:text-center w-32"><app-detail-contrat [childContrat]=contrat ></app-detail-contrat></span>
        <!-- </div>                                                                                                      (postMessageEvent)=postMessage($event)                                                                      -->
   </div>

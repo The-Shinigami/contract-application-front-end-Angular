@@ -6,20 +6,30 @@ import {
 import {
   DetailContratComponent
 } from '../detail-contrat/detail-contrat.component';
+import { ContratsService } from 'src/app/Services/contrats/contrats.service';
 @Component({
   selector: 'app-list-contrats',
   templateUrl: './list-contrats.component.html',
   styleUrls: ['./list-contrats.component.css']
 })
 export class ListContratsComponent implements OnInit {
-  contrats: any = {};
+  contrats: any = null;
   sourceContrats: any = {};
-  constructor() {
-
+  constructor(public contratsService:ContratsService) {
+    this.getContrats();
   }
-
+  public async getContrats() {
+    this.contrats = await this.contratsService.getAll();   
+    this.sourceContrats = this.contrats;
+    console.log(this.contrats)
+    setTimeout(
+     ()=> {
+          this.afterInit();
+      }, 1000);
+ 
+  }
   ngOnInit(): void {
-    this.contrats = [{
+   /*  this.contrats = [{
         date: "2020.1.1",
         numeroContrat: "21587643",
         idProduit: "2020",
@@ -61,11 +71,10 @@ export class ListContratsComponent implements OnInit {
         cost: 190,
         description: "aaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaa aaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaa aaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaa"
       }
-    ]
-    this.sourceContrats = this.contrats;
+    ] */
   }
-  ngAfterViewInit() {
-    DetailContratComponent.modals.forEach((element: any) => {
+  afterInit() { 
+      DetailContratComponent.modals.forEach((element: any) => {
       this.hideModal(element);
       this.showModal(element);
     });

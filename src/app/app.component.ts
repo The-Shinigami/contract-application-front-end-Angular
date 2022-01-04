@@ -7,6 +7,7 @@ import {
   HostBinding
 } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthService } from './Services/auth/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,11 +19,10 @@ export class AppComponent {
   @ViewChild('toggleDarkUrl') toggleDarkUrl: ElementRef<HTMLInputElement> = {} as ElementRef;
   @ViewChild('logoUrl') logoUrl: ElementRef<HTMLInputElement> = {} as ElementRef;
   @ViewChild('profileMenu') profileMenu: ElementRef<HTMLInputElement> = {} as ElementRef;
-
   @HostBinding("style.--lightGray") 
-  lighitGray: String = '';
+  lighitGray: string = '';
   @HostBinding("style.--textColor") 
-  textColor: String = '';
+  textColor: string = '';
 
   title = 'ContratProjet';
   navbarUrls: any; 
@@ -31,11 +31,14 @@ export class AppComponent {
     darktGray: "#0d0c16",
     white: "#F5FFFA",
     black:"#000000"
-    };
+  };
   
-  constructor(private route: Router, private elementRef: Renderer2) {}
-
-  ngAfterViewInit() {
+  
+  constructor(private route: Router, private elementRef: Renderer2, public authService: AuthService) { 
+   
+  }
+   
+  ngAfterViewInit() {   
      this.navbarUrls = document.getElementsByClassName("under-line-lightMotard");
     for (let index = 0; index < this.navbarUrls.length; index++) {
       const element = this.navbarUrls[index];     
@@ -53,12 +56,14 @@ export class AppComponent {
     }
     //add under ligne when the acess is from the link directly
     this.addUnderLigneAcessFromUrl(window.location.href.replace("http://"+window.location.host+"/",""));
+    
+    this.authService.redirect("");
   }
 
   toggleMobileMenu() {
     this.mobileMenu.nativeElement.classList.toggle("hidden");
   }
-  toggleUnderLigne(choix: String) {  
+  toggleUnderLigne(choix: string) {  
     this.route.navigate([choix]);
     //remove  under lign from all navbar elements
         for (let index = 0; index < this.navbarUrls.length; index++) {
@@ -66,11 +71,13 @@ export class AppComponent {
         }
     if (choix.includes("espaceClient")) {
        this.navbarUrls[5].classList.add("under-line-lightMotard-check");
-        this.navbarUrls[11].classList.add("under-line-lightMotard-check");
+      this.navbarUrls[11].classList.add("under-line-lightMotard-check");
+      //redirect if user is logged
+      this.authService.redirect(choix);
     }
   }
    
-  addUnderLigneAcessFromUrl(Url: String) {
+  addUnderLigneAcessFromUrl(Url: string) {
     switch (Url) {
       case "": this.navbarUrls[0].classList.add("under-line-lightMotard-check");
                this.navbarUrls[6].classList.add("under-line-lightMotard-check");
@@ -86,6 +93,8 @@ export class AppComponent {
         break;
       case "espaceClient": this.navbarUrls[5].classList.add("under-line-lightMotard-check");
         this.navbarUrls[11].classList.add("under-line-lightMotard-check");
+        //redirect if user is logged
+        this.authService.redirect("");
         break;
       case "espaceClientProfil": this.navbarUrls[5].classList.add("under-line-lightMotard-check");
         this.navbarUrls[11].classList.add("under-line-lightMotard-check");
@@ -118,9 +127,17 @@ export class AppComponent {
    
   }
   toggleProfileMenu() {
-    ['ease-out', 'duration-100', 'opacity-100', 'scale-100'].map(
+    ['ease-out', 'duration-100', 'scale-100'].map(
       c => this.profileMenu.nativeElement.classList.toggle(c));
-    ['ease-in', 'duration-75', 'opacity-0', 'scale-95'].map(
+    ['ease-in', 'duration-75', 'scale-95'].map(
       c => this.profileMenu.nativeElement.classList.toggle(c));
+    this.profileMenu.nativeElement.classList.toggle("hidden")
   }
+  signOut() {
+    this.authService.signOut();
+  }
+ 
+
 }
+
+

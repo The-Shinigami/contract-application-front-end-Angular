@@ -1,23 +1,34 @@
-
 <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0 mt-20vh">
+
+
   <div
     class="shadow-Motard flex justify-center items-center bg-lightPink-100 rounded mb-4 pt-2 p-0 md:pb-10 pb-10 sm:mb-2 xl:px-20 xl:mx-10">
     <div class="w-9/12 h-5/6 text-start ">
       <h1 class="text-3xl text-center text-black pb-8 font-bold">Welcome TO RISEUP</h1>
+      <div class="relative text-center font-bold  pl-4 pr-10 leading-normal bg-alert rounded-lg" role="alert">
+        <p>{{alertMessage}}</p>
+        <span class="absolute inset-y-0 right-0 flex items-center mr-4">
+        </span>
+      </div>
       <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
         <div class="flex justify-between py-4">
-          <label for="email"  class="text-black font-bold" >Email</label>
-          <input id="email" class="h-8 border-2 border-gray-600 rounded-xl" type="text"  formControlName="username">
+          <label for="email" class="text-black font-bold">Email</label>
+          <input id="email" class="h-8 border-2 border-gray-600 rounded-xl text-black" type="text"
+            formControlName="username">
         </div>
         <div class="flex justify-between">
-          <label for="pw" class="text-black font-bold" >Password</label>
-          <input  id="pw" class="h-8 border-2 border-gray-600 rounded-xl" type="password"  formControlName="password">
+          <label for="pw" class="text-black font-bold">Password</label>
+          <input id="pw" class="h-8 border-2 border-gray-600 rounded-xl text-black" type="password"
+            formControlName="password">
         </div>
-        <div class="flex justify-center pt-4"><button type="submit" class="text-black font-bold bg-lightMoutard-100 border-2 border-black px-4 py-1 rounded-lg w-full">S'authentifier</button></div>
+        <div class="flex justify-center pt-4"><button type="submit"
+            class="text-black font-bold bg-lightMoutard-100 border-2 border-black px-4 py-1 rounded-lg w-full">S'authentifier</button>
+        </div>
         <div class="flex justify-center pt-4">
-          <button (click) = "signIn()" type="button" class=" text-black grid grid-flow-col justify-evenly font-bold bg-red-200 border-2 border-black px-4 py-1 rounded-lg w-full">
-            <span ><img src="/assets/imgs/gmail.jpg" alt=""  class="w-8"></span>
-            <span  >S'authentifier avec gmail</span> </button></div>
+          <button (click)="signIn()" type="button"
+            class=" text-black grid grid-flow-col justify-evenly font-bold bg-red-200 border-2 border-black px-4 py-1 rounded-lg w-full">
+            <span><img src="/assets/imgs/gmail.jpg" alt="" class="w-8"></span>
+            <span>S'authentifier avec gmail</span> </button></div>
       </form>
     </div>
   </div>
@@ -34,8 +45,8 @@
         besoins.
       </p>
     </div>
-  </div>
 
+  </div>
 
 
 </div>
