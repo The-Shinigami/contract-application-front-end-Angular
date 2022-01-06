@@ -19,6 +19,7 @@ export class AppComponent {
   @ViewChild('toggleDarkUrl') toggleDarkUrl: ElementRef<HTMLInputElement> = {} as ElementRef;
   @ViewChild('logoUrl') logoUrl: ElementRef<HTMLInputElement> = {} as ElementRef;
   @ViewChild('profileMenu') profileMenu: ElementRef<HTMLInputElement> = {} as ElementRef;
+  @ViewChild('adminProfileMenu') adminProfileMenu : ElementRef<HTMLInputElement> = {} as ElementRef;
   @HostBinding("style.--lightGray") 
   lighitGray: string = '';
   @HostBinding("style.--textColor") 
@@ -42,7 +43,7 @@ export class AppComponent {
      this.navbarUrls = document.getElementsByClassName("under-line-lightMotard");
     for (let index = 0; index < this.navbarUrls.length; index++) {
       const element = this.navbarUrls[index];     
-      const element_mobile =  this.navbarUrls.length >index+6 ?this.navbarUrls[index+6]: this.navbarUrls[index-6];
+      const element_mobile =  this.navbarUrls.length >index+7 ?this.navbarUrls[index+7]: this.navbarUrls[index-7];
   
       element.addEventListener("click", () => {
         //remove  under lign from all navbar elements
@@ -69,38 +70,46 @@ export class AppComponent {
         for (let index = 0; index < this.navbarUrls.length; index++) {
           this.navbarUrls[index].classList.remove("under-line-lightMotard-check");
         }
-    if (choix.includes("espaceClient")) {
+    if (choix.includes("espaceAdmin")) {
+       this.navbarUrls[6].classList.add("under-line-lightMotard-check");
+      this.navbarUrls[13].classList.add("under-line-lightMotard-check");
+    }
+   else if (choix.includes("espaceClient")) {
        this.navbarUrls[5].classList.add("under-line-lightMotard-check");
-      this.navbarUrls[11].classList.add("under-line-lightMotard-check");
+      this.navbarUrls[12].classList.add("under-line-lightMotard-check");
       //redirect if user is logged
       this.authService.redirect(choix);
     }
+    
   }
    
   addUnderLigneAcessFromUrl(Url: string) {
     switch (Url) {
       case "": this.navbarUrls[0].classList.add("under-line-lightMotard-check");
-               this.navbarUrls[6].classList.add("under-line-lightMotard-check");
+               this.navbarUrls[7].classList.add("under-line-lightMotard-check");
         break;
       case "aProposDeNous": this.navbarUrls[1].classList.add("under-line-lightMotard-check");
-                            this.navbarUrls[7].classList.add("under-line-lightMotard-check");
+                            this.navbarUrls[8].classList.add("under-line-lightMotard-check");
         break;
       case "notreService": this.navbarUrls[2].classList.add("under-line-lightMotard-check");
-        this.navbarUrls[8].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[9].classList.add("under-line-lightMotard-check");
         break;
       case "espaceContrat": this.navbarUrls[4].classList.add("under-line-lightMotard-check");
-        this.navbarUrls[10].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[11].classList.add("under-line-lightMotard-check");
         break;
       case "espaceClient": this.navbarUrls[5].classList.add("under-line-lightMotard-check");
-        this.navbarUrls[11].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[12].classList.add("under-line-lightMotard-check");
         //redirect if user is logged
         this.authService.redirect("");
         break;
       case "espaceClientProfil": this.navbarUrls[5].classList.add("under-line-lightMotard-check");
-        this.navbarUrls[11].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[12].classList.add("under-line-lightMotard-check");
+        break;
+      case "espaceAdminProfil": this.navbarUrls[6].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[13].classList.add("under-line-lightMotard-check");
         break;
       default: this.navbarUrls[0].classList.add("under-line-lightMotard-check");
-               this.navbarUrls[6].classList.add("under-line-lightMotard-check");
+               this.navbarUrls[7].classList.add("under-line-lightMotard-check");
     }
   }
 
@@ -132,6 +141,13 @@ export class AppComponent {
     ['ease-in', 'duration-75', 'scale-95'].map(
       c => this.profileMenu.nativeElement.classList.toggle(c));
     this.profileMenu.nativeElement.classList.toggle("hidden")
+  }
+  toggleProfileAdminMenu() {
+    ['ease-out', 'duration-100', 'scale-100'].map(
+      c => this.adminProfileMenu.nativeElement.classList.toggle(c));
+    ['ease-in', 'duration-75', 'scale-95'].map(
+      c => this.adminProfileMenu.nativeElement.classList.toggle(c));
+    this.adminProfileMenu.nativeElement.classList.toggle("hidden")
   }
   signOut() {
     this.authService.signOut();

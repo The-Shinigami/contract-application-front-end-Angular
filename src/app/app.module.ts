@@ -13,6 +13,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ChercherContratComponent } from './espaceContrat/chercher-contrat/chercher-contrat.component';
 import { AuthComponent } from './espaceClient/auth/auth.component';
 import { ProfilComponent } from './espaceClient/profil/profil.component';
+import { ContratsComponent } from './espaceClient/contrats/contrats.component';
+import { EspaceAdminComponent } from './espaceAdmin/espace-admin/espace-admin.component';
+import { AdminListContratsComponent } from './espaceAdmin/gestionContrats/admin-list-contrats/admin-list-contrats.component';
+import { AdminDetailContratComponent } from './espaceAdmin/gestionContrats/admin-detail-contrat/admin-detail-contrat.component';
+import { AdminChercherContratComponent } from './espaceAdmin/gestionContrats/admin-chercher-contrat/admin-chercher-contrat.component';
+import { AdminModifierContratComponent } from './espaceAdmin/gestionContrats/admin-modifier-contrat/admin-modifier-contrat.component';
+import { AdminAjouterContratComponent } from './espaceAdmin/gestionContrats/admin-ajouter-contrat/admin-ajouter-contrat.component';
+import { ProfilAdminComponent } from './espaceAdmin/profil-admin/profil-admin.component';
+import { AdminTrieContratsComponent } from './espaceAdmin/gestionContrats/admin-trie-contrats/admin-trie-contrats.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +34,16 @@ import { ProfilComponent } from './espaceClient/profil/profil.component';
     TrieContratsComponent,
     ChercherContratComponent,
     AuthComponent,
-    ProfilComponent
+    ProfilComponent,
+    ContratsComponent,
+    EspaceAdminComponent,
+    AdminListContratsComponent,
+    AdminDetailContratComponent,
+    AdminChercherContratComponent,
+    AdminModifierContratComponent,
+    AdminAjouterContratComponent,
+    ProfilAdminComponent,
+    AdminTrieContratsComponent,
   ],
   imports: [
     BrowserModule,

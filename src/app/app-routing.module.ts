@@ -7,13 +7,19 @@ import { ListContratsComponent } from './espaceContrat/list-contrats/list-contra
 import { AuthComponent } from './espaceClient/auth/auth.component';
 import { ProfilComponent } from './espaceClient/profil/profil.component';
 import { AuthGuardService } from './Services/authguard/auth-guard.service';
+import { ContratsComponent } from './espaceClient/contrats/contrats.component';
+import { EspaceAdminComponent } from './espaceAdmin/espace-admin/espace-admin.component';
+import { AdminListContratsComponent } from './espaceAdmin/gestionContrats/admin-list-contrats/admin-list-contrats.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'aProposDeNous', pathMatch: 'full', component: AProposDeNousComponent }, 
   { path: 'notreService', pathMatch: 'full', component: NotreServiceComponent },
   { path: 'espaceContrat', pathMatch: 'full', component: ListContratsComponent },
-  { path: 'espaceClient', pathMatch: 'full', component: AuthComponent },
-   { path: 'espaceClientProfil',canActivate: [AuthGuardService], pathMatch: 'full', component:  ProfilComponent },
+  { path: 'espaceClient', pathMatch: 'full', component: AuthComponent},
+  { path: 'espaceClientContrats',data: {role: 'ROLE_USER'},canActivate: [AuthGuardService], pathMatch: 'full', component: ContratsComponent },
+  { path: 'espaceClientProfil',data: {role: 'ROLE_USER'}, canActivate: [AuthGuardService], pathMatch: 'full', component: ProfilComponent },
+  { path: 'espaceAdminProfil', data: { role: 'ROLE_ADMIN' }, canActivate: [AuthGuardService], pathMatch: 'full', component: EspaceAdminComponent },
+    { path: 'espaceAdminContrats',data: {role: 'ROLE_ADMIN'},canActivate: [AuthGuardService], pathMatch: 'full', component: AdminListContratsComponent },
 ];
 
 @NgModule({
