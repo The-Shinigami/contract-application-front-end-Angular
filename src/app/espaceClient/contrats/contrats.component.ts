@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ContratsService } from 'src/app/Services/contrats/contrats.service';
+import { ClientDetailContratComponent } from '../client-detail-contrat/client-detail-contrat.component';
 
 @Component({
   selector: 'app-contrats',
@@ -6,10 +8,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contrats.component.css']
 })
 export class ContratsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  contrats: any = null;
+  sourceContrats: any = {};
+   constructor(public contratsService:ContratsService) {
+    this.getContrats();
+  }
+  public async getContrats() {
+    this.contrats = await this.contratsService.getAll();   
+    this.sourceContrats = this.contrats;
+    console.log(this.contrats)
+    setTimeout(
+     ()=> {
+          this.afterInit();
+      }, 1000);
+ 
+  }
+  ngOnInit(): void {}
+  afterInit() { 
+      ClientDetailContratComponent.modals.forEach((element: any) => {
+      this.hideModal(element);
+      this.showModal(element);
+    });
+  }
+  setContracts(contrats: any) {
+    this.contrats = contrats;
+  }
+  hideModal(element: any) {
+    element.querySelector(".close-modal").addEventListener('click', () => {
+      element.classList.add("hidden");
+    });
+  }
+  showModal(element: any) {
+    element.previousElementSibling.addEventListener('click', () => {
+      element.classList.remove("hidden");
+    });
+   
   }
 
 }

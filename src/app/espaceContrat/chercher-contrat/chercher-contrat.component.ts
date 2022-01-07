@@ -26,7 +26,7 @@ export class ChercherContratComponent implements OnInit {
         this.list[i] = element;
         i++;
       }
-      else if (element.idProduit == this.contractForm.value.valeur ) {
+      else if (element.prop.id == this.contractForm.value.valeur ) {
         this.list[i] = element;
         i++;
       }

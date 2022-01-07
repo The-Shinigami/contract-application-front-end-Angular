@@ -1,23 +1,23 @@
 <div class="grid grid-flow-row justify-center ">
   <div class="grid grid-flow-col justify-around  py-8">
-   <!--  <app-chercher-contrat (contratsAfterRecherch)=setContracts($event) [contratsBeforeRecherch]=sourceContrats></app-chercher-contrat> -->
+    <app-chercher-contrat (contratsAfterRecherch)=setContracts($event) [contratsBeforeRecherch]=sourceContrats></app-chercher-contrat>
    <div>
-    <!--  <app-trie-contrats (contratsAfterTrie)=setContracts($event) [contratsBeforeTrie]=sourceContrats></app-trie-contrats> -->
+     <app-trie-contrats (contratsAfterTrie)=setContracts($event) [contratsBeforeTrie]=sourceContrats></app-trie-contrats>
    </div>
   </div>
   <div class="table-header">
     <div class="sm:text-start xs:text-start xl:text-center md:text-center w-32">Date</div>
-    <div class="sm:text-start xs:text-start xl:text-center md:text-center w-40">Numero de Contrat</div>
-    <div class="sm:text-start xs:text-start xl:text-center md:text-center w-44">Identifiant de produit</div>
+    <div class="sm:text-start xs:text-start xl:text-center md:text-center w-48">Numero de Contrat</div>
+    <div class="sm:text-start xs:text-start xl:text-center md:text-center w-48">Identifiant de produit</div>
     <div class="sm:text-start xs:text-start xl:text-center md:text-center w-32">Plus de details</div>
   </div>
 
-  <div class="table-body" > <!-- *ngIf="contrats != null" -->
-       <div class="table-row" ><!-- *ngFor="let contrat of contrats" -->
-      <span class="sm:text-start xs:text-start xl:text-center md:text-center w-32"><!-- {{contrat["date"]}} --></span>
-      <span class="sm:text-start xs:text-start xl:text-center md:text-center w-40" >contrat["numeroContrat"]</span>
-      <span class="sm:text-start xs:text-start xl:text-center md:text-center w-44">contrat["idProduit"]</span>
-      <span class="sm:text-start xs:text-start xl:text-center md:text-center w-32"><!-- <app-detail-contrat [childContrat]=contrat ></app-detail-contrat> --></span>
+  <div class="table-body"  *ngIf="contrats != null">
+       <div class="table-row" *ngFor="let contrat of contrats">
+      <span class="sm:text-start xs:text-start xl:text-center md:text-center w-32">{{contrat.date}}</span>
+      <span class="sm:text-start xs:text-start xl:text-center md:text-center w-48" >{{contrat.id}}</span>
+      <span class="sm:text-start xs:text-start xl:text-center md:text-center w-48">{{contrat.prop.id}}</span>
+      <span class="sm:text-start xs:text-start xl:text-center md:text-center w-32"><app-client-detail-contrat [childContrat]=contrat ></app-client-detail-contrat></span>
        <!-- </div>                                                                                                      (postMessageEvent)=postMessage($event)                                                                      -->
   </div>
 </div>

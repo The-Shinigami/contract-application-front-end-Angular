@@ -27,8 +27,9 @@ export class AuthService {
       utilisateur.setRole(localStorage.getItem('role') + "".toLowerCase());
       this.utilisateur.setIsLogged(true);
       this.isAuthenticated = true;
-      this.redirect("");
-    }
+      this.redirect("");     
+      axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
+    } 
   }
 
   public async signIn(user: {}) {
@@ -40,6 +41,7 @@ export class AuthService {
         localStorage.setItem('user', JSON.stringify(response.data));
         localStorage.setItem('role', response.data.roles[0].replace("ROLE_", "").toLowerCase());
         this.isAuthenticated = true
+        axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken
       }
     ).catch(() => {
       this.message = "Verifier vos données"
@@ -47,7 +49,7 @@ export class AuthService {
     });
     this.redirect("");
   }
-  public signOut() {
+  public async signOut() {
     this.isAuthenticated = false
     this.router.navigate(['espaceClient']);
     document.getElementById("user-menu-button")?.classList.add("hidden");
@@ -64,10 +66,13 @@ export class AuthService {
                 elementAdmin.classList.add("hidden");
                 elementClient.classList.remove("hidden")
               }
+    
+    await this.api.post("/signout", this.utilisateur.getUser());
   }
 
   async redirect(distanation: string) {
     if (this.utilisateur.getIsLogged()) {
+      console.log(this.utilisateur.getUser().roles[0])
       switch (this.utilisateur.getUser().roles[0]) {
         case "ROLE_USER":
           document.getElementById("user-menu-button")?.classList.remove("hidden");

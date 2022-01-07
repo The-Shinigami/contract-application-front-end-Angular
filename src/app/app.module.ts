@@ -22,6 +22,7 @@ import { AdminModifierContratComponent } from './espaceAdmin/gestionContrats/adm
 import { AdminAjouterContratComponent } from './espaceAdmin/gestionContrats/admin-ajouter-contrat/admin-ajouter-contrat.component';
 import { ProfilAdminComponent } from './espaceAdmin/profil-admin/profil-admin.component';
 import { AdminTrieContratsComponent } from './espaceAdmin/gestionContrats/admin-trie-contrats/admin-trie-contrats.component';
+import { ClientDetailContratComponent } from './espaceClient/client-detail-contrat/client-detail-contrat.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { AdminTrieContratsComponent } from './espaceAdmin/gestionContrats/admin-
     AdminAjouterContratComponent,
     ProfilAdminComponent,
     AdminTrieContratsComponent,
+    ClientDetailContratComponent,
   ],
   imports: [
     BrowserModule,

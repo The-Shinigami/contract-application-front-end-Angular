@@ -11,6 +11,7 @@ export class UtilisateurService {
   
   public setUser(user :any) {
     this.user = user;
+    console.log(user)
   }
     public getUser() {
     return this.user
