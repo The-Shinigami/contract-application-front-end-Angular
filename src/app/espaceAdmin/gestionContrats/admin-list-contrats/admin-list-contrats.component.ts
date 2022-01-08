@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DetailContratComponent } from 'src/app/espaceContrat/detail-contrat/detail-contrat.component';
 import { ContratsService } from 'src/app/Services/contrats/contrats.service';
+import { AdminDetailContratComponent } from '../admin-detail-contrat/admin-detail-contrat.component';
 
 @Component({
   selector: 'app-admin-list-contrats',
@@ -7,7 +9,7 @@ import { ContratsService } from 'src/app/Services/contrats/contrats.service';
   styleUrls: ['./admin-list-contrats.component.css']
 })
 export class AdminListContratsComponent implements OnInit {
- contrats: any = null;
+  contrats: any = null;
   sourceContrats: any = {};
   constructor(public contratsService:ContratsService ) {
     this.getContrats();
@@ -24,10 +26,10 @@ export class AdminListContratsComponent implements OnInit {
   }
   ngOnInit(): void {}
   afterInit() { 
-    /*   DetailContratComponent.modals.forEach((element: any) => {
+      DetailContratComponent.modals.forEach((element: any) => {
       this.hideModal(element);
       this.showModal(element);
-    }); */
+    });
   }
   setContracts(contrats: any) {
     this.contrats = contrats;

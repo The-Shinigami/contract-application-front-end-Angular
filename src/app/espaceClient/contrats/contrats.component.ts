@@ -14,7 +14,7 @@ export class ContratsComponent implements OnInit {
     this.getContrats();
   }
   public async getContrats() {
-    this.contrats = await this.contratsService.getAll();   
+    this.contrats = await this.contratsService.getAllForUser();   
     this.sourceContrats = this.contrats;
     console.log(this.contrats)
     setTimeout(

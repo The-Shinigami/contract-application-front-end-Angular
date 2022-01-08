@@ -35,7 +35,7 @@ export class AuthComponent implements OnInit {
   async onSubmit() {
     await this.authService.signIn(this.clientForm.value); 
     this.alertMessage = this.authService.message;
-    this.authService.redirect("espaceClient");
+    this.authService.redirectSRole(); 
     setTimeout(
      ()=> {
         this.authService.message = ""

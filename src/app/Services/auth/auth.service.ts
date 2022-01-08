@@ -27,9 +27,9 @@ export class AuthService {
       utilisateur.setRole(localStorage.getItem('role') + "".toLowerCase());
       this.utilisateur.setIsLogged(true);
       this.isAuthenticated = true;
-      this.redirect("");     
+      this.redirect("");
       axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
-    } 
+    }
   }
 
   public async signIn(user: {}) {
@@ -47,7 +47,7 @@ export class AuthService {
       this.message = "Verifier vos données"
       this.utilisateur.setIsLogged(false)
     });
-    this.redirect("");
+    this.redirectSRole();
   }
   public async signOut() {
     this.isAuthenticated = false
@@ -55,24 +55,23 @@ export class AuthService {
     document.getElementById("user-menu-button")?.classList.add("hidden");
     document.getElementById("user-menu")?.classList.add("hidden");
     document.getElementById("admin-menu-button")?.classList.add("hidden");
-    document.getElementById("admin-menu")?.classList.add("hidden");    
+    document.getElementById("admin-menu")?.classList.add("hidden");
     localStorage.removeItem("user");
     localStorage.removeItem("role");
-      var urlsAdmin = document.getElementsByClassName("espace-admin-url");
-              var urlsClient = document.getElementsByClassName("espace-client-url");
-              for (let index = 0; index < urlsAdmin.length; index++) {
-                const elementAdmin = urlsAdmin[index];
-                const elementClient = urlsClient[index];
-                elementAdmin.classList.add("hidden");
-                elementClient.classList.remove("hidden")
-              }
-    
+    var urlsAdmin = document.getElementsByClassName("espace-admin-url");
+    var urlsClient = document.getElementsByClassName("espace-client-url");
+    for (let index = 0; index < urlsAdmin.length; index++) {
+      const elementAdmin = urlsAdmin[index];
+      const elementClient = urlsClient[index];
+      elementAdmin.classList.add("hidden");
+      elementClient.classList.remove("hidden")
+    }
+
     await this.api.post("/signout", this.utilisateur.getUser());
   }
 
   async redirect(distanation: string) {
     if (this.utilisateur.getIsLogged()) {
-      console.log(this.utilisateur.getUser().roles[0])
       switch (this.utilisateur.getUser().roles[0]) {
         case "ROLE_USER":
           document.getElementById("user-menu-button")?.classList.remove("hidden");
@@ -80,39 +79,52 @@ export class AuthService {
           if ("espaceClient" == distanation) {
             this.router.navigate(['espaceClientProfil']);
           }
-           var urlsAdmin = document.getElementsByClassName("espace-admin-url");
-              var urlsClient = document.getElementsByClassName("espace-client-url");
-              for (let index = 0; index < urlsAdmin.length; index++) {
-                const elementAdmin = urlsAdmin[index];
-                const elementClient = urlsClient[index];
-                elementAdmin.classList.add("hidden");
-                elementClient.classList.remove("hidden")
-              }
+          var urlsAdmin = document.getElementsByClassName("espace-admin-url");
+          var urlsClient = document.getElementsByClassName("espace-client-url");
+          for (let index = 0; index < urlsAdmin.length; index++) {
+            const elementAdmin = urlsAdmin[index];
+            const elementClient = urlsClient[index];
+            elementAdmin.classList.add("hidden");
+            elementClient.classList.remove("hidden")
+          }
           break;
         case "ROLE_ADMIN":
           await this.metaMaskService.signInWithMetaMask();
           if (this.metaMaskService.getAccounts().includes(this.utilisateur.getUser().account_address.toLowerCase())) {
-            if ("espaceClient" != distanation) {
-              this.router.navigate(['espaceAdminProfil']);
-              document.getElementById("admin-menu-button")?.classList.remove("hidden");
-              document.getElementById("admin-menu")?.classList.remove("hidden");
-              var urlsAdmin = document.getElementsByClassName("espace-admin-url");
-              var urlsClient = document.getElementsByClassName("espace-client-url");
-              for (let index = 0; index < urlsAdmin.length; index++) {
-                const elementAdmin = urlsAdmin[index];
-                const elementClient = urlsClient[index];
-                elementAdmin.classList.remove("hidden");
-                elementClient.classList.add("hidden")
+            document.getElementById("admin-menu-button")?.classList.remove("hidden");
+            document.getElementById("admin-menu")?.classList.remove("hidden");
+            var urlsAdmin = document.getElementsByClassName("espace-admin-url");
+            var urlsClient = document.getElementsByClassName("espace-client-url");
+            for (let index = 0; index < urlsAdmin.length; index++) {
+              const elementAdmin = urlsAdmin[index];
+              const elementClient = urlsClient[index];
+              elementAdmin.classList.remove("hidden");
+              elementClient.classList.add("hidden")
+              if ("espaceAdmin" == distanation) {
+                this.router.navigate(['espaceAdminProfil']);
+              } else {
+                this.message = "Verifier vos données"
+                this.utilisateur.setIsLogged(false)
               }
-            } else {
-              this.message = "Verifier vos données"
-              this.utilisateur.setIsLogged(false)
             }
+
+          } else {
+            this.message = "Verifier votre walet ,compte introuvable";
+            this.utilisateur.setIsLogged(false);
           }
           break
         default:
           break;
       }
+    }
+
+  }
+
+  public redirectSRole() {
+    if (this.utilisateur.getRole() == "user") {
+      this.redirect("espaceClient");
+    } else if (this.utilisateur.getRole() == "admin") {
+      this.redirect("espaceAdmin");
     }
 
   }

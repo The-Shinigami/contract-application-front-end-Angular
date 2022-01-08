@@ -25,7 +25,13 @@ export class TrieContratsComponent implements OnInit {
   contratsAfterTrie = new EventEmitter();
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    var modals = document.querySelectorAll(".trie-modal");
+    modals.forEach((element: any) => {
+      this.hideModal(element);
+      this.showModal(element);
+    });
+  }
 
   onSubmit() {
     switch (this.contractForm.value.choix) {
@@ -97,6 +103,16 @@ export class TrieContratsComponent implements OnInit {
     }
     this.contratsAfterTrie.emit(this.contratsBeforeTrie);
   }
+hideModal(element: any) {
+    element.querySelector(".close-modal").addEventListener('click', () => {
+      element.classList.add("hidden");
+    });
+  }
+  showModal(element: any) {
+    element.previousElementSibling.addEventListener('click', () => {
+      element.classList.remove("hidden");
+    });
 
+  }
 
 }

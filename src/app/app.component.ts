@@ -55,9 +55,9 @@ export class AppComponent {
         element_mobile.classList.toggle("under-line-lightMotard-check");
       });   
     }
-    //add under ligne when the acess is from the link directly
+    //add under ligne when the access is from the link directly
     this.addUnderLigneAcessFromUrl(window.location.href.replace("http://"+window.location.host+"/",""));
-    
+     
     this.authService.redirect("");
   }
 
@@ -100,13 +100,19 @@ export class AppComponent {
       case "espaceClient": this.navbarUrls[5].classList.add("under-line-lightMotard-check");
         this.navbarUrls[12].classList.add("under-line-lightMotard-check");
         //redirect if user is logged
-        this.authService.redirect("");
+       this.authService.redirectSRole(); 
         break;
       case "espaceClientProfil": this.navbarUrls[5].classList.add("under-line-lightMotard-check");
         this.navbarUrls[12].classList.add("under-line-lightMotard-check");
         break;
       case "espaceAdminProfil": this.navbarUrls[6].classList.add("under-line-lightMotard-check");
-        this.navbarUrls[13].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[13].classList.add("under-line-lightMotard-check"); 
+        break;
+      case "espaceClientContrats": this.navbarUrls[5].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[12].classList.add("under-line-lightMotard-check"); 
+        break;
+       case "espaceAdminContrats": this.navbarUrls[6].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[13].classList.add("under-line-lightMotard-check"); 
         break;
       default: this.navbarUrls[0].classList.add("under-line-lightMotard-check");
                this.navbarUrls[7].classList.add("under-line-lightMotard-check");

@@ -11,30 +11,45 @@ export class ChercherContratComponent implements OnInit {
   })
   @Input()
   contratsBeforeRecherch: any;
-   @Output()
-   contratsAfterRecherch = new EventEmitter();
-  list: any=[];
-  constructor() { }
+  @Output()
+  contratsAfterRecherch = new EventEmitter();
+  list: any = [];
+  constructor() {
+  }
 
   ngOnInit(): void {
+    var modals = document.querySelectorAll(".chercher-modal");
+    modals.forEach((element: any) => {
+      this.hideModal(element);
+      this.showModal(element);
+    });
   }
-  onSubmit() {  
+
+  onSubmit() {
     var i = 0;
-    console.log(this.contratsBeforeRecherch);
     this.contratsBeforeRecherch.forEach((element: any) => {
-      if (element.date.indexOf(this.contractForm.value.valeur) != -1 ) {
+      if (element.date.indexOf(this.contractForm.value.valeur) != -1) {
         this.list[i] = element;
         i++;
       }
-      else if (element.prop.id == this.contractForm.value.valeur ) {
+      else if (element.prop.id == this.contractForm.value.valeur) {
         this.list[i] = element;
         i++;
       }
     });
-    console.log(this.list);
     this.contratsAfterRecherch.emit(this.list);
     this.list = [];
   }
+ 
+  hideModal(element: any) {
+    element.querySelector(".close-modal").addEventListener('click', () => {
+      element.classList.add("hidden");
+    });
+  }
+  showModal(element: any) {
+    element.previousElementSibling.addEventListener('click', () => {
+      element.classList.remove("hidden");
+    });
 
-
+  }
 }
