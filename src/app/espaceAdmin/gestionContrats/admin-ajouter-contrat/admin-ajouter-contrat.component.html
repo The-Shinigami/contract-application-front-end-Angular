@@ -8,14 +8,14 @@
   <div class="ajouter-modal hidden">
     <div class="h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
       <!-- modal -->
-      <div class="bg-white rounded-3xl  shadow-lg w-10/12 md:w-1/3">
+      <div class="bg-white rounded-3xl  shadow-lg w-10/12 md:w-9/12 xl:w-1/2 lg:w-1/2 img-seller">
         <!-- modal header -->
         <div class="px-4 py-2 flex ">
           <button class="text-black close-modal text-xl font-bold ">X</button>
           <span class="text-black text-center w-full font-bold">Vendeur</span>
         </div>
         <!-- modal body -->
-        <form class="p-3 grid grid-flow-row justify-center"  [formGroup]="sellerForm" (ngSubmit)="onSubmitSeller()">
+        <form class="p-3 grid grid-flow-row " [formGroup]="sellerForm" (ngSubmit)="onSubmitSeller()">
           <div class="grid grid-flow-row justify-around">
             <span class=" font-bold">Nom</span>
             <input class="rounded-lg border-2 border-black" name="valeur" formControlName="nom">
@@ -30,9 +30,14 @@
             <span class=" font-bold pr-1">telephone</span>
             <input class="rounded-lg border-2 border-black" name="valeur" formControlName="tel">
           </div>
-          <div class="grid ">
+          <div class="flex justify-between">
+            <div>
+              <app-admin-get-client (clientChercher)=setSeller($event)> </app-admin-get-client>
+            </div>
             <button type="submit" (click)="next()"
-              class="mt-4 border-2 border-black px-4 bg-gray-400 rounded-3xl">Next</button>
+              class="mt-4 border-2 border-black px-4 bg-gray-400 rounded-3xl text-bold flex justify-between">
+              <img src="assets/imgs/right.svg" alt="" srcset="">
+            </button>
           </div>
         </form>
       </div>
@@ -42,15 +47,15 @@
   <div class="ajouter-modal hidden">
     <div class="h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black   bg-opacity-50">
       <!-- modal -->
-      <div class="bg-white rounded-3xl  shadow-lg w-10/12 md:w-1/3">
+      <div class="bg-white rounded-3xl  shadow-lg w-10/12 md:w-9/12 xl:w-1/2 lg:w-1/2 img-buyer">
         <!-- modal header -->
         <div class="px-4 py-2 flex ">
           <button class="text-black close-modal text-xl font-bold ">X</button>
           <span class="text-black text-center w-full font-bold">Acheteur</span>
         </div>
         <!-- modal body -->
-        <form class="p-3 grid grid-flow-row justify-center" [formGroup]="buyerForm" (ngSubmit)="onSubmitBuyer()">
-          
+        <form class="p-3 grid grid-flow-row " [formGroup]="buyerForm" (ngSubmit)="onSubmitBuyer()">
+
           <div class="grid grid-flow-row justify-around">
             <span class=" font-bold">Nom</span>
             <input class="rounded-lg border-2 border-black" name="valeur" formControlName="nom">
@@ -65,42 +70,51 @@
             <span class=" font-bold pr-1">telephone</span>
             <input class="rounded-lg border-2 border-black" name="valeur" formControlName="tel">
           </div>
-          <div class="grid ">
+          <div class="flex justify-between">
+            <div>
+              <app-admin-get-client  (clientChercher)=setBuyer($event)> </app-admin-get-client>
+            </div>
             <button type="submit" (click)="next()"
-              class="mt-4 border-2 border-black px-4 bg-gray-400 rounded-3xl">Next</button>
+              class="mt-4 border-2 border-black px-4 bg-gray-400 rounded-3xl text-bold flex justify-between">
+              <img src="assets/imgs/right.svg" alt="" srcset="">
+            </button>
           </div>
         </form>
       </div>
     </div>
   </div>
-   <!-- ************************************************************************************ -->
+  <!-- ************************************************************************************ -->
   <div class="ajouter-modal hidden">
     <div class="h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black   bg-opacity-50">
       <!-- modal -->
-      <div class="bg-white rounded-3xl  shadow-lg w-10/12 md:w-1/3">
+      <div class="bg-white rounded-3xl  shadow-lg w-10/12 md:w-9/12 xl:w-1/2 lg:w-1/2 img-deal">
         <!-- modal header -->
         <div class="px-4 py-2 flex ">
           <button class="text-black close-modal text-xl font-bold ">X</button>
           <span class="text-black text-center w-full font-bold">Propriété</span>
         </div>
         <!-- modal body -->
-        <form class="p-3 grid grid-flow-row justify-center" [formGroup]="propForm" (ngSubmit)="onSubmitProp()">
-          
+        <form class="p-3 grid grid-flow-row " [formGroup]="propForm" (ngSubmit)="onSubmitProp()">
+
           <div class="grid grid-flow-row justify-around">
-            <span class=" font-bold">type Propriété</span>
-            <input class="rounded-lg border-2 border-black" name="valeur" formControlName="typePrp">
             <span class=" font-bold">Prix</span>
             <input class="rounded-lg border-2 border-black" name="valeur" formControlName="cost">
             <span class=" font-bold">Date</span>
             <input class="rounded-lg border-2 border-black" name="valeur" formControlName="date">
-           <span class=" font-bold">Description</span>
+            <span class=" font-bold">type Propriété</span>
+            <input class="rounded-lg border-2 border-black" name="valeur" formControlName="typePrp">   
+            <span class=" font-bold">Description</span>
             <!-- <input class="rounded-lg border-2 border-black h-28" name="valeur" formControlName="username"> -->
-          <textarea class="rounded-lg border-2 border-black " name="textarea" formControlName="desc" rows="10" cols="50" value=""></textarea>
-        </div>
+            <textarea class="rounded-lg border-2 border-black " name="textarea" formControlName="desc" rows="10"
+              cols="50" value=""></textarea>
+          </div>
 
-          <div class="grid ">
+          <div class="flex justify-between">
+            <div>
+              <app-admin-get-prop> </app-admin-get-prop>
+            </div>
             <button type="submit" (click)="next()"
-              class="mt-4 border-2 border-black px-4 bg-blue-400 rounded-3xl">Valide</button>
+              class="mt-4 border-2 border-black px-4 bg-blue-400 rounded-3xl text-bold">Valide</button>     
           </div>
         </form>
       </div>
