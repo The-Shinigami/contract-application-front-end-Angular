@@ -26,7 +26,7 @@ export class AdminListContratsComponent implements OnInit {
   }
   ngOnInit(): void {}
   afterInit() { 
-      DetailContratComponent.modals.forEach((element: any) => {
+       AdminDetailContratComponent.modals.forEach((element: any) => {
       this.hideModal(element);
       this.showModal(element);
     });

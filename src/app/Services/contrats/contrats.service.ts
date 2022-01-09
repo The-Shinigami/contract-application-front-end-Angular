@@ -13,9 +13,16 @@ export class ContratsService {
     seller: {},
     cost: string,
     date: string,
-    prop:{}   
-  }
+    prop: {};
+  };
   constructor(public utilisateur: UtilisateurService) {
+       this.newContract = {
+      buyer: {},
+      seller: {},
+      cost: "",
+      date: "",
+      prop: {}
+    };
     if (localStorage.getItem("buyer") != null) {
       this.newContract.buyer = JSON.parse(localStorage.getItem('buyer') + "");
     }
@@ -24,7 +31,8 @@ export class ContratsService {
         }
         if (localStorage.getItem("prop") != null) {
       this.newContract.prop = JSON.parse(localStorage.getItem('prop') + "");
-    }
+        }
+ 
   }
 
   public async getAll() {
@@ -43,7 +51,6 @@ export class ContratsService {
               contracts_1 = response.data
             console.log(contracts_1)}
           )
-       axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
           await this.api.get("/contrat/listAsBuyer/"+this.utilisateur.getUser().id).then(
             (response) => {
               contracts_2 = response.data
@@ -54,30 +61,39 @@ export class ContratsService {
    return this.contrats
   }
   
-  setNewContractBuyer(buyer: {}) {
-    this.api.post("/users/saveUser", buyer).then(
+ async setNewContractBuyer(buyer: any) {
+  await  this.api.post("/users/saveUser", buyer).then(
       response => {
         this.newContract.buyer = response.data
       })    
     localStorage.setItem('buyer', JSON.stringify(this.newContract.buyer));
   }
-  setNewContractseller(seller: {}) {
-      this.api.post("/users/saveUser", seller).then(
+async  setNewContractseller(seller: any) {
+  await     this.api.post("/users/saveUser", seller).then(
       response => {
         this.newContract.seller = response.data
       })  
+    localStorage.setItem('seller', JSON.stringify(this.newContract.seller));
   }
   setNewContractCost(cost: string) { this.newContract.cost = cost;}
   setNewContractDate(date: string) { this.newContract.date = date;}
-  setNewContractProp(prop: {}) {
-     this.api.post("/propreties/saveProprety", prop).then(
+async  setNewContractProp(prop: any) {
+  await    this.api.post("/propreties/saveProprety", prop).then(
       response => {    
     this.newContract.prop = response.data
       })  
+    
   }
   
-  addNewContract() {
-    this.api.post("/contrats/addContract",this.newContract)
+  async addNewContract() {
+  console.log(this.newContract)
+  await this.api.post("/contrats/addContract", this.newContract)
+  localStorage.removeItem("seller");
+  localStorage.removeItem("buyer");
+  console.log("add success");
+  }
+  getNewContract() {
+  return  this.newContract;
   }
 }
 

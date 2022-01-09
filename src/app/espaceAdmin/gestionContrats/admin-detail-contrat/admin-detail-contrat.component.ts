@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-admin-detail-contrat',
@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-detail-contrat.component.css']
 })
 export class AdminDetailContratComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+@Input()
+  childContrat: any;
+  static modals: any;
+  constructor() {
+   }
+  
+  ngOnInit() {
+ 
+  }
+  ngAfterViewInit() {   
+     AdminDetailContratComponent.modals = document.querySelectorAll(".modal");
   }
 
 }
