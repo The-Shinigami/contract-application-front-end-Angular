@@ -33,12 +33,39 @@
                 </div>
                 <div class="grid grid-flow-row">
                   <div>
-                    <span class="font-bold">Identifiant </span>
+                    <span class="font-bold">Nom </span>
                   </div>
                   <div>
-                    {{childContrat.seller.id_user}}</div>
+                    {{childContrat.seller.nom}}</div>
                   <div>
-                    {{childContrat.buyer.id_user}}</div>
+                    {{childContrat.buyer.nom}}</div>
+                </div>
+                <div class="grid grid-flow-row">
+                  <div>
+                    <span class="font-bold">Prenom </span>
+                  </div>
+                  <div>
+                    {{childContrat.seller.prenom}}</div>
+                  <div>
+                    {{childContrat.buyer.prenom}}</div>
+                </div>
+                <div class="grid grid-flow-row">
+                  <div>
+                    <span class="font-bold">Cin </span>
+                  </div>
+                  <div>
+                    {{childContrat.seller.cin}}</div>
+                  <div>
+                    {{childContrat.buyer.cin}}</div>
+                </div>
+                <div class="grid grid-flow-row">
+                  <div>
+                    <span class="font-bold">Tel</span>
+                  </div>
+                  <div>
+                    {{childContrat.seller.tel}}</div>
+                  <div>
+                    {{childContrat.buyer.tel}}</div>
                 </div>
               </div>
               <div></div>
@@ -47,9 +74,9 @@
           <div class="grid grid-flow-row justify-start">
             <div class="text-left"> <span class="font-bold">Type : </span> {{childContrat.prop.typePrp}}</div>
             <div class="text-left"><span class="font-bold">Cost : </span> {{childContrat.cost}}</div>
-             <div class="text-left"><span class="font-bold">Description: </span></div>
-             <div class="text-left">{{childContrat.prop.desc}}</div>
-             
+            <div class="text-left"><span class="font-bold">Description: </span></div>
+            <div class="text-left">{{childContrat.prop.desc}}</div>
+
           </div>
         </div>
       </div>

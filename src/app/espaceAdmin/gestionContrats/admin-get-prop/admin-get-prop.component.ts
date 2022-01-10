@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import axios from 'axios';
 
 @Component({
   selector: 'app-admin-get-prop',
@@ -7,9 +9,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminGetPropComponent implements OnInit {
 
+  modals: any;
+   chercheForm = new FormGroup({
+       idProduit: new FormControl('')
+   })
+  produit: any;
+  alertMessage: any = "";
+  successMessage: any = "";
   constructor() { }
-
-  ngOnInit(): void {
+@Output()
+produitChercher = new EventEmitter(); 
+   ngOnInit(): void {
+     this.modals = document.querySelectorAll(".get-produit-modal");   
+      this.modals.forEach((element:any) => {
+        this.hideModal(element);
+        this.showModal(element);
+      });     
+   }
+  hideModal(element: any) {
+    element.querySelector(".close-modal-get-produit").addEventListener('click', () => {
+      element.classList.add("hidden");
+    });
+  }
+  showModal(element: any) {
+    element.previousElementSibling.addEventListener('click', () => {
+      element.classList.remove("hidden");
+    });
+  }
+  onSubmit() {
+    console.log(this.chercheForm.value);
+    this.getProduit(this.chercheForm.value.idProduit);
   }
 
+ async getProduit(idProduit:string) {
+   await axios.get("http://localhost:9191/api/propreties/getPropById/"+idProduit).then(
+     (response) => {
+       this.produit = response.data,
+         this.successMessage = "Les données du produit sont récupérées",
+         this.produitChercher.emit(this.produit)
+   }
+   ).catch(()=>this.alertMessage = "Produit n'exist pas")
+   
+   setTimeout(() => {
+     this.alertMessage = "",
+        this.successMessage = ""
+   }, 1000);
+  }
 }

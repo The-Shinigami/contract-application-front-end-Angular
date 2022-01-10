@@ -8,6 +8,8 @@ import { UtilisateurService } from '../utilisateur/utilisateur.service';
 export class ContratsService {
   api = axios.create({ baseURL: 'http://localhost:9191/api' })
   contrats: any;
+  contrats_1: any;
+  contrats_2: any;
   newContract: {
     buyer: {},
     seller: {},
@@ -41,25 +43,31 @@ export class ContratsService {
       )
     return this.contrats
 }
-  public async getAllForUser() {
+  public async getAllForUser() {   
+    await this.getAllAsBuyer();
+    await this.getAllAsSeller();
     
-      var contracts_1 : any =[];
-      var contracts_2 : any =[];
-      axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
+     this.contrats = this.contrats_1.concat(this.contrats_2);
+   return this.contrats
+  }
+
+  async getAllAsSeller() {
+     axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
           await  this.api.get("/contrat/listAsSeller/"+this.utilisateur.getUser().id).then(
             (response) => {
-              contracts_1 = response.data
-            console.log(contracts_1)}
-          )
-    axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
-          await this.api.get("/contrat/listAsBuyer/"+this.utilisateur.getUser().id).then(
-            (response) => {
-              contracts_2 = response.data
-              console.log(contracts_2)
+              this.contrats_1 = response.data;
             }
           )
-      this.contrats = contracts_1.concat(contracts_2);
-   return this.contrats
+  }
+ async getAllAsBuyer() {
+    var contracts_2 : any =[];
+     axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
+          await this.api.get("/contrat/listAsBuyer/"+this.utilisateur.getUser().id).then(
+            (response) => {
+              this.contrats_2 = response.data
+            }
+          )
+   return contracts_2;
   }
   
  async setNewContractBuyer(buyer: any) {
@@ -87,18 +95,23 @@ async  setNewContractseller(seller: any) {
   }
   setNewContractCost(cost: string) { this.newContract.cost = cost;}
   setNewContractDate(date: string) { this.newContract.date = date;}
-async  setNewContractProp(prop: any) {
-  await    this.api.post("/propreties/saveProprety", prop).then(
+  async setNewContractProp(prop: any) {
+  await  this.api.post("/propreties/saveProprety", prop).then(
       response => {    
     this.newContract.prop = response.data
       })     
 }
- 
+ async setContractProp(prop: any) {
+    this.newContract.prop = prop;
+    await  this.api.put("/propreties/updateProp/"+prop.id,prop)   
+    localStorage.setItem('prop', JSON.stringify(this.newContract.prop));
+  }
   
   async addNewContract() {
   await this.api.post("/contrats/addContract", this.newContract)
   localStorage.removeItem("seller");
-  localStorage.removeItem("buyer");
+    localStorage.removeItem("buyer");
+    localStorage.removeItem("prop");
   console.log("add success");
   }
   getNewContract() {

@@ -11,19 +11,21 @@ export class ContratsComponent implements OnInit {
   contrats: any = null;
   sourceContrats: any = {};
    constructor(public contratsService:ContratsService) {
-    this.getContrats();
+    
   }
-  public async getContrats() {
-    this.contrats = await this.contratsService.getAllForUser();   
+  public async  getContrats() {  
+       this.contrats = await this.contratsService.getAllForUser();
+   
     this.sourceContrats = this.contrats;
-    console.log(this.contrats)
     setTimeout(
      ()=> {
           this.afterInit();
       }, 1000);
  
   }
-  ngOnInit(): void {}
+  async ngOnInit() {
+ await  this.getContrats();
+  }
   afterInit() { 
       ClientDetailContratComponent.modals.forEach((element: any) => {
       this.hideModal(element);

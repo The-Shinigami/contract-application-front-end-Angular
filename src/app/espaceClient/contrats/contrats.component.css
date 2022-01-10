@@ -17,3 +17,10 @@
 .table-body {
   margin-top: 10px;
 }
+
+.img-clientContrats {
+  background-image: url("/assets/imgs/clientContrats.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 500px;
+}

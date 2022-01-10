@@ -1,7 +1,19 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { hide } from '@popperjs/core';
-import { ContratsService } from 'src/app/Services/contrats/contrats.service';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output
+} from '@angular/core';
+import {
+  FormControl,
+  FormGroup
+} from '@angular/forms';
+import {
+  hide
+} from '@popperjs/core';
+import {
+  ContratsService
+} from 'src/app/Services/contrats/contrats.service';
 
 @Component({
   selector: 'app-admin-ajouter-contrat',
@@ -9,7 +21,7 @@ import { ContratsService } from 'src/app/Services/contrats/contrats.service';
   styleUrls: ['./admin-ajouter-contrat.component.css']
 })
 export class AdminAjouterContratComponent implements OnInit {
-  modals: NodeListOf<Element>;
+  modals: NodeListOf < Element > ;
   pageNumber = 0;
   buyerForm = new FormGroup({
     nom: new FormControl(''),
@@ -37,12 +49,12 @@ export class AdminAjouterContratComponent implements OnInit {
   @Output()
   callContrats = new EventEmitter();
 
-  constructor(public contratsService: ContratsService) { }
-  
+  constructor(public contratsService: ContratsService) {}
+
   ngOnInit(): void {
     this.modals = document.querySelectorAll(".ajouter-modal");
     this.showModal(this.modals[0]);
-      
+
     this.modals.forEach((element: any) => {
       this.hideModal(element);
     });
@@ -67,38 +79,53 @@ export class AdminAjouterContratComponent implements OnInit {
       this.modals[this.pageNumber].classList.add("hidden");
       this.pageNumber = 0;
     }
-     
+
   }
   onSubmitBuyer() {
-    // this.contratsService.setNewContractBuyer(this.buyerForm.value);
+     this.contratsService.setNewContractBuyer(this.buyerForm.value);
 
   }
   onSubmitSeller() {
-    //this.contratsService.setNewContractseller(this.sellerForm.value);
+    this.contratsService.setNewContractseller(this.sellerForm.value);
   }
   async onSubmitProp() {
-     /* await  this.contratsService.setNewContractProp({
+    if(localStorage.getItem("prop") == null)
+    { await  this.contratsService.setNewContractProp({
          typePrp: this.propForm.value.typePrp,
        desc: this.propForm.value.desc,
          owner : this.contratsService.newContract.buyer
-       });
-       this.contratsService.setNewContractDate(this.propForm.value.date);
-       this.contratsService.setNewContractCost(this.propForm.value.cost);   
+       });}
+    this.contratsService.setNewContractDate(this.propForm.value.date);
+    this.contratsService.setNewContractCost(this.propForm.value.cost);   
     await this.contratsService.addNewContract();
-    this.callContrats.emit(); */
-    
+    this.callContrats.emit(); 
+
   }
   setSeller(seller: any) {
     this.contratsService.setContractSeller(seller);
-    setTimeout(() => {  
-    this.next();
+    setTimeout(() => {
+      this.next();
     }, 1100);
   }
-    setBuyer(buyer: any) {
+  setBuyer(buyer: any) {
     this.contratsService.setContractBuyer(buyer);
-    setTimeout(() => {  
-    this.next();
+    setTimeout(() => {
+      this.next();
     }, 1100);
-    }
-  
+  }
+  setProduit(produit: any) {
+    this.contratsService.setContractProp({
+         id: produit.id,
+         typePrp: produit.typePrp,
+         desc: produit.desc,
+         owner : this.contratsService.newContract.buyer
+       });
+    this.propForm.setValue({
+    typePrp: produit.typePrp,
+    desc: produit.desc,
+    cost: "",
+    date: ""
+    });
+  }
+
 }

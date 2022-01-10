@@ -1,6 +1,6 @@
 <div>
   <button class="show-modal">
-    <div class="grid grid-flow-col justify-between border-2 border-black bg-gray-100 px-8 py-1 rounded-3xl">
+    <div class="grid grid-flow-col justify-between border-gray-500 border-b-2  rounded-xl px-8 py-1 shadow bg-lightGray-100">
       <div class="px-6 font-bold text-black">Ajouter</div>
       <div class=""> <img class="w-6 h-5" src="/assets/imgs/plus-square.svg" alt=""></div>
     </div>
@@ -111,7 +111,7 @@
 
           <div class="flex justify-between">
             <div>
-              <app-admin-get-prop> </app-admin-get-prop>
+              <app-admin-get-prop (produitChercher)=setProduit($event)> </app-admin-get-prop>
             </div>
             <button type="submit" (click)="next()"
               class="mt-4 border-2 border-black px-4 bg-blue-400 rounded-3xl text-bold">Valide</button>     

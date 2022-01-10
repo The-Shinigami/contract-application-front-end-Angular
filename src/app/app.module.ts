@@ -23,6 +23,8 @@ import { ProfilAdminComponent } from './espaceAdmin/profil-admin/profil-admin.co
 import { ClientDetailContratComponent } from './espaceClient/client-detail-contrat/client-detail-contrat.component';
 import { AdminGetClientComponent } from './espaceAdmin/gestionContrats/admin-get-client/admin-get-client.component';
 import { AdminGetPropComponent } from './espaceAdmin/gestionContrats/admin-get-prop/admin-get-prop.component';
+import { ClientProduitsComponent } from './espaceClient/client-produits/client-produits.component';
+import { ListClientsComponent } from './espaceAdmin/gestionClients/list-clients/list-clients.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { AdminGetPropComponent } from './espaceAdmin/gestionContrats/admin-get-p
     ClientDetailContratComponent,
     AdminGetClientComponent,
     AdminGetPropComponent,
+    ClientProduitsComponent,
+    ListClientsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 .table-header {
-  @apply grid justify-items-start xl:grid-flow-col lg:grid-flow-col md:grid-flow-col sm:grid-flow-col xl:gap-x-8 lg:gap-x-8 md:gap-6 sm:gap-4 py-3 rounded-3xl font-bold;
+  @apply grid justify-items-start xl:grid-flow-col lg:grid-flow-col md:grid-flow-col sm:grid-flow-col  py-3 rounded-3xl font-bold;
   background-color: var(--lightPink);
   box-shadow: 4px 3px var(--lightMotard);
   border: 2px solid gray;
@@ -18,8 +18,8 @@
   margin-top: 10px;
 }
 
-.img-adminContracts {
-  background-image: url("/assets/imgs/adminContracts.svg");
+.img-produits {
+  background-image: url("/assets/imgs/produits.svg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   width: 500px;

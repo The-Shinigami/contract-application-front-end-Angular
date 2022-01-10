@@ -20,3 +20,10 @@
   background-size: 100% 100%;
   background-color: #fff;
 }
+.shadow {
+  box-shadow: 4px 0px var(--lightMotard);
+}
+
+.bg-lightGray-100 {
+  background-color: #EAECEF;
+}
