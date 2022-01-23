@@ -11,6 +11,7 @@ import { AdminDetailContratComponent } from '../admin-detail-contrat/admin-detai
 export class AdminListContratsComponent implements OnInit {
   contrats: any = null;
   sourceContrats: any = {};
+  load: boolean = false;
   constructor(public contratsService:ContratsService ) {
     this.getContrats();
   }
@@ -18,6 +19,9 @@ export class AdminListContratsComponent implements OnInit {
     this.contrats = await this.contratsService.getAll();   
     this.sourceContrats = this.contrats;
     console.log(this.contrats)
+    setTimeout(() => {
+      this.load = true;
+    }, 500);
     setTimeout(
      ()=> {
           this.afterInit();

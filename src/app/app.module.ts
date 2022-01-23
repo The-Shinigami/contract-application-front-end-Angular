@@ -25,6 +25,7 @@ import { AdminGetClientComponent } from './espaceAdmin/gestionContrats/admin-get
 import { AdminGetPropComponent } from './espaceAdmin/gestionContrats/admin-get-prop/admin-get-prop.component';
 import { ClientProduitsComponent } from './espaceClient/client-produits/client-produits.component';
 import { ListClientsComponent } from './espaceAdmin/gestionClients/list-clients/list-clients.component';
+import { ModifierClientComponent } from './espaceAdmin/gestionClients/modifier-client/modifier-client.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ListClientsComponent } from './espaceAdmin/gestionClients/list-clients/
     AdminGetPropComponent,
     ClientProduitsComponent,
     ListClientsComponent,
+    ModifierClientComponent,
   ],
   imports: [
     BrowserModule,

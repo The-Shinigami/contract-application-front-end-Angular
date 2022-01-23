@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notre-service.component.css']
 })
 export class NotreServiceComponent implements OnInit {
-
-  constructor() { }
+  load: boolean = false;
+  constructor() {}
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.load = true;
+    }, 500);
   }
 
 }

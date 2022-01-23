@@ -15,16 +15,20 @@ import { ContratsService } from 'src/app/Services/contrats/contrats.service';
 export class ListContratsComponent implements OnInit {
   contrats: any = null;
   sourceContrats: any = {};
-  constructor(public contratsService:ContratsService) {
+  load: boolean = false;
+  constructor(public contratsService: ContratsService) {
     this.getContrats();
   }
   public async getContrats() {
     this.contrats = await this.contratsService.getAll();   
     this.sourceContrats = this.contrats;
     console.log(this.contrats);
+    setTimeout(() => {  
+        this.load = true;
+    }, 500);
     setTimeout(
-     ()=> {
-          this.afterInit();
+      () => {
+        this.afterInit();
       }, 1000);
  
   }

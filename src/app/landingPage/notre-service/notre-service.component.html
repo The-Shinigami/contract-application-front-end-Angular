@@ -1,6 +1,4 @@
-<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 w-10/12 justify-items-center m-auto mt-24 gap-9">
-
-
+<div *ngIf="load" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 w-10/12 justify-items-center m-auto mt-24 gap-9">
   <div class="card-container">
     <div class="card-body">
       <img class="card-img" src="../../../assets/imgs/card_1.png" alt="">
@@ -25,6 +23,9 @@
       </div>
     </div>
   </div>
-
-
+</div>
+<div *ngIf="!load" class="absolute left-0 top-0" style="width:100vw; height:100vh;">
+  <div class="bg-slate-400/50 w-full h-full flex">
+    <img class="animate-spin duration-75 delay-1000 m-auto w-44" src="/assets/imgs/load.png" alt="">
+  </div>
 </div>

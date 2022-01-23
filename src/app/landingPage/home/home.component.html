@@ -1,5 +1,5 @@
-<div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 justify-items-center mt-3 gap-0">
-  <div class="flex justify-center">
+<div *ngIf="load" class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 justify-items-center mt-3 gap-0">
+  <div class="flex justify-center animate-pulse">
     <img class="lg:w-10/12 md:w-8/12 w-9/12" src="../../../assets/imgs/home_photo.png" alt="Blockchain">
   </div>
   <div class="flex xl:justify-start lg:justify-start md:justify-center justify-center items-center w-10/12">
@@ -10,5 +10,10 @@
     </div>
     <div>
     </div>
+  </div>
+</div>
+<div *ngIf="!load" class="absolute left-0 top-0" style="width:100vw; height:100vh;">
+  <div class="bg-slate-400/50 w-full h-full flex">
+    <img class="animate-spin duration-75 delay-1000 m-auto w-44" src="/assets/imgs/load.png" alt="">
   </div>
 </div>
