@@ -94,6 +94,9 @@ export class AppComponent {
       case "notreService": this.navbarUrls[2].classList.add("under-line-lightMotard-check");
         this.navbarUrls[9].classList.add("under-line-lightMotard-check");
         break;
+      case "contactezNous": this.navbarUrls[3].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[10].classList.add("under-line-lightMotard-check");
+        break;      
       case "espaceContrat": this.navbarUrls[4].classList.add("under-line-lightMotard-check");
         this.navbarUrls[11].classList.add("under-line-lightMotard-check");
         break;

@@ -12,10 +12,12 @@ import { EspaceAdminComponent } from './espaceAdmin/espace-admin/espace-admin.co
 import { AdminListContratsComponent } from './espaceAdmin/gestionContrats/admin-list-contrats/admin-list-contrats.component';
 import { ClientProduitsComponent } from './espaceClient/client-produits/client-produits.component';
 import { ListClientsComponent } from './espaceAdmin/gestionClients/list-clients/list-clients.component';
+import { ContactezNousComponent } from './landingPage/contactez-nous/contactez-nous.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'aProposDeNous', pathMatch: 'full', component: AProposDeNousComponent }, 
   { path: 'notreService', pathMatch: 'full', component: NotreServiceComponent },
+   { path: 'contactezNous', pathMatch: 'full', component: ContactezNousComponent },
   { path: 'espaceContrat', pathMatch: 'full', component: ListContratsComponent },
   { path: 'espaceClient', pathMatch: 'full', component: AuthComponent},
   { path: 'espaceClientContrats',data: {role: 'ROLE_USER'},canActivate: [AuthGuardService], pathMatch: 'full', component: ContratsComponent },

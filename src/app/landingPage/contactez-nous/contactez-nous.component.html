@@ -1,0 +1,22 @@
+<div class="">
+  <div class="flex w-full h-5/6">
+    <div class="m-auto bg-white w-full h-full rounded-2xl">
+      <div class="flex justify-center" style="margin-top:5%;">
+        <form [formGroup]="reclamationForm" (ngSubmit)="onSubmit()">
+          <div>
+            <div class="font-bold">Email(*dans lequelle on va envoyer la reponse)</div>
+            <input type="text" class="border-2 border-slate-800 w-full rounded-lg" formControlName="email">
+          </div>
+          <div class="">
+            <div class="font-bold">Réclamation ou question</div>
+            <textarea class="border-2 border-slate-800 rounded-lg" name="" id="" cols="50" rows="10"
+              formControlName="desc">
+          </textarea>
+          </div>
+          <div>
+            <button class="border-2 border-slate-800 rounded-lg w-full mt-2 bg-slate-300 font-bold">Envoyez</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -26,6 +26,7 @@ import { AdminGetPropComponent } from './espaceAdmin/gestionContrats/admin-get-p
 import { ClientProduitsComponent } from './espaceClient/client-produits/client-produits.component';
 import { ListClientsComponent } from './espaceAdmin/gestionClients/list-clients/list-clients.component';
 import { ModifierClientComponent } from './espaceAdmin/gestionClients/modifier-client/modifier-client.component';
+import { ContactezNousComponent } from './landingPage/contactez-nous/contactez-nous.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ModifierClientComponent } from './espaceAdmin/gestionClients/modifier-c
     ClientProduitsComponent,
     ListClientsComponent,
     ModifierClientComponent,
+    ContactezNousComponent,
   ],
   imports: [
     BrowserModule,
