@@ -22,7 +22,6 @@ export class ListContratsComponent implements OnInit {
   public async getContrats() {
     this.contrats = await this.contratsService.getAll();   
     this.sourceContrats = this.contrats;
-    console.log(this.contrats);
     setTimeout(() => {  
         this.load = true;
     }, 500);

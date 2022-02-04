@@ -10,6 +10,7 @@ import { ClientDetailContratComponent } from '../client-detail-contrat/client-de
 export class ContratsComponent implements OnInit {
   contrats: any = null;
   sourceContrats: any = {};
+  load = false;
    constructor(public contratsService:ContratsService) {
     
   }
@@ -17,6 +18,9 @@ export class ContratsComponent implements OnInit {
        this.contrats = await this.contratsService.getAllForUser();
    
     this.sourceContrats = this.contrats;
+      setTimeout(() => {  
+        this.load = true;
+    }, 500);
     setTimeout(
      ()=> {
           this.afterInit();

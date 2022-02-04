@@ -1,13 +1,86 @@
-.card-container {
+.card-container_1 {
     @apply  mx-8 sm:mx-0 md:mx-0 lg:mx-0 xl:mx-0;
     background-color: var(--lightPink);
     box-shadow: 5px 5px var(--lightMotard);
     border-radius: 70px;
-  transition: all 1s ease-in-out;
+    position: relative;
+  
 }
-.card-container:hover{
-    transform: scale(1.2);
+.card-container_2 {
+  @apply mx-8 sm:mx-0 md:mx-0 lg:mx-0 xl:mx-0;
+  background-color: var(--lightPink);
+  box-shadow: 5px 5px var(--lightMotard);
+  border-radius: 70px;
+  position: relative;
 }
+.card-container_3{
+  @apply mx-8 sm:mx-0 md:mx-0 lg:mx-0 xl:mx-0;
+  background-color: var(--lightPink);
+  box-shadow: 5px 5px var(--lightMotard);
+  border-radius: 70px;
+
+}
+.container{
+border-radius: 70px;
+}
+
+.card-container_1:hover {
+  animation-duration: 6s;
+  animation-iteration-count: 1;
+  animation-name: bounce_1;
+  animation-timing-function: ease-in-out;
+}
+.card-container_1:hover~.card-container_2 {
+   animation-duration: 6s;
+   animation-iteration-count: 1;
+   animation-name: bounce_3;
+   animation-timing-function: ease-in-out;
+}
+.card-container_1:hover~.card-container_3 {
+  animation-duration: 6s;
+  animation-iteration-count: 1;
+  animation-name: bounce_2;
+  animation-timing-function: ease-in-out;
+}
+
+.card-container_2:hover {
+  animation-duration: 6s;
+  animation-iteration-count: 1;
+  animation-name: bounce_3;
+  animation-timing-function: ease-in-out;
+}
+.card-container_2:hover~.card-container_3 {
+  animation-duration: 6s;
+  animation-iteration-count: 1;
+  animation-name: bounce_1;
+  animation-timing-function: ease-in-out;
+}
+.card-container_2:hover~.card-container_2 {
+  animation-duration: 6s;
+  animation-iteration-count: 1;
+  animation-name: bounce_2;
+  animation-timing-function: ease-in-out;
+}
+.card-container_3:hover{
+  animation-duration: 6s;
+  animation-iteration-count: 1;
+  animation-name: bounce_3;
+  animation-timing-function: ease-in-out;
+}
+.card-container_3:hover~.card-container_1 {
+  animation-duration: 6s;
+  animation-iteration-count: 1;
+  animation-name: bounce_1;
+  animation-timing-function: ease-in-out;
+}
+.card-container_3:hover~.card-container_2 {
+  animation-duration: 6s;
+  animation-iteration-count: 1;
+  animation-name: bounce_2;
+  animation-timing-function: ease-in-out;
+}
+
+
 .card-body{
    @apply flex flex-wrap justify-center;
 }
@@ -18,4 +91,54 @@
     @apply text-center text-3xl px-5 pb-5;
     color: black!important;
     cursor: default;
+}
+@keyframes bounce_1 {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+
+  50% {
+    transform: translateX(-20px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes bounce_2 {
+  0% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateX(-20px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes bounce_3 {
+  0% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(-20px);
+  }
+
+  50% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }

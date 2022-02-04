@@ -6,6 +6,9 @@ import {
   FormControl,
   FormGroup
 } from '@angular/forms';
+import {
+  ReclamationService
+} from 'src/app/Services/reclamation/reclamation.service';
 
 @Component({
   selector: 'app-contactez-nous',
@@ -13,22 +16,43 @@ import {
   styleUrls: ['./contactez-nous.component.css']
 })
 export class ContactezNousComponent implements OnInit {
-  
+  alertMessage = ""
+  successMessage = ""
+  load: boolean = false;
   reclamationForm = new FormGroup({
     email: new FormControl(''),
     desc: new FormControl(''),
     date: new FormControl('')
   })
-  constructor() {}
+  constructor(private reclamationService: ReclamationService) {}
 
-  ngOnInit(): void {}
-  onSubmit() {
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.load = true;
+    }, 500); 
+  }
+  async onSubmit() {
     var date = new Date();
     this.reclamationForm.setValue({
       email: this.reclamationForm.value.email,
       desc: this.reclamationForm.value.desc,
-      date: date.getDate() + "/" + (date.getMonth()+1)+ "/" + date.getFullYear()+ " " + date.getHours()+ ":" + date.getMinutes()
+      date: date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes()
     })
-    console.log(this.reclamationForm.value)
+    await this.reclamationService.setReclamation(this.reclamationForm.value);
+    if (this.reclamationService.state) {
+      this.successMessage = "La reclamation a bien envoyez"
+    } else {
+      this.alertMessage = "La reclamation a echoué"
+    }
+    setTimeout(
+     ()=> {
+        this.successMessage= ""
+        this.alertMessage =""
+      }, 2000); 
+
+  }
+
+  async setReclamation(reclamationForm: any) {
+    await this.reclamationService.setReclamation(reclamationForm);
   }
 }

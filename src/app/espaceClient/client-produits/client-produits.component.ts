@@ -8,13 +8,17 @@ import { ProduitService } from 'src/app/Services/produits/produit.service';
 })
 export class ClientProduitsComponent implements OnInit {
   produits: any;
+  load = false;
   constructor(public produitService: ProduitService) {
     
   }
 
  async ngOnInit(){
  await   this.produitService.setProduits();
-    this.produits = this.produitService.getProduits();   
+   this.produits = this.produitService.getProduits();   
+     setTimeout(() => {  
+        this.load = true;
+    }, 500);
   }
 
 }

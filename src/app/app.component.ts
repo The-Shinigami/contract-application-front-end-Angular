@@ -17,9 +17,12 @@ import { AuthService } from './Services/auth/auth.service';
 export class AppComponent {
   @ViewChild('mobileMenu') mobileMenu: ElementRef<HTMLInputElement> = {} as ElementRef;
   @ViewChild('toggleDarkUrl') toggleDarkUrl: ElementRef<HTMLInputElement> = {} as ElementRef;
+  @ViewChild('toggleDarkUrlSmall') toggleDarkUrlSmall: ElementRef<HTMLInputElement> = {} as ElementRef;
   @ViewChild('logoUrl') logoUrl: ElementRef<HTMLInputElement> = {} as ElementRef;
   @ViewChild('profileMenu') profileMenu: ElementRef<HTMLInputElement> = {} as ElementRef;
-  @ViewChild('adminProfileMenu') adminProfileMenu : ElementRef<HTMLInputElement> = {} as ElementRef;
+   @ViewChild('profileMenuSmall') profileMenuSmall: ElementRef<HTMLInputElement> = {} as ElementRef;
+  @ViewChild('adminProfileMenu') adminProfileMenu: ElementRef<HTMLInputElement> = {} as ElementRef;
+  @ViewChild('adminProfileMenuSmall') adminProfileMenuSmall : ElementRef<HTMLInputElement> = {} as ElementRef;
   @HostBinding("style.--lightGray") 
   lighitGray: string = '';
   @HostBinding("style.--textColor") 
@@ -117,6 +120,12 @@ export class AppComponent {
        case "espaceAdminContrats": this.navbarUrls[6].classList.add("under-line-lightMotard-check");
         this.navbarUrls[13].classList.add("under-line-lightMotard-check"); 
         break;
+       case "espaceAdminReclamation": this.navbarUrls[6].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[13].classList.add("under-line-lightMotard-check"); 
+        break;
+       case "espaceAdminClients": this.navbarUrls[6].classList.add("under-line-lightMotard-check");
+        this.navbarUrls[13].classList.add("under-line-lightMotard-check"); 
+        break;
       default: this.navbarUrls[0].classList.add("under-line-lightMotard-check");
                this.navbarUrls[7].classList.add("under-line-lightMotard-check");
     }
@@ -130,6 +139,9 @@ export class AppComponent {
       this.toggleDarkUrl.nativeElement.setAttribute("src", "/assets/imgs/toggle-on.svg");
       this.toggleDarkUrl.nativeElement.setAttribute("style",
         "filter: invert(0%) sepia(83%) saturate(7500%) hue-rotate(210deg) brightness(115%) contrast(115%);");
+       this.toggleDarkUrlSmall.nativeElement.setAttribute("src", "/assets/imgs/toggle-on.svg");
+      this.toggleDarkUrlSmall.nativeElement.setAttribute("style",
+        "filter: invert(0%) sepia(83%) saturate(7500%) hue-rotate(210deg) brightness(115%) contrast(115%);");
       this.logoUrl.nativeElement.setAttribute("src","/assets/imgs/logo_dark.png")
     } 
     else if (this.lighitGray == this.cssColors.lightGray|| this.lighitGray == '' )
@@ -138,7 +150,11 @@ export class AppComponent {
       this.textColor = this.cssColors.white;
       this.toggleDarkUrl.nativeElement.setAttribute("src", "/assets/imgs/toggle-off.svg");
         this.toggleDarkUrl.nativeElement.setAttribute("style",
-        "filter: invert(100%) sepia(65%) saturate(2%) hue-rotate(310deg) brightness(109%) contrast(101%);");
+          "filter: invert(100%) sepia(65%) saturate(2%) hue-rotate(310deg) brightness(109%) contrast(101%);");
+       this.toggleDarkUrlSmall.nativeElement.setAttribute("src", "/assets/imgs/toggle-off.svg");
+        this.toggleDarkUrlSmall.nativeElement.setAttribute("style",
+          "filter: invert(100%) sepia(65%) saturate(2%) hue-rotate(310deg) brightness(109%) contrast(101%);");
+
       this.logoUrl.nativeElement.setAttribute("src","/assets/imgs/logo.png")
     }
       
@@ -149,14 +165,25 @@ export class AppComponent {
       c => this.profileMenu.nativeElement.classList.toggle(c));
     ['ease-in', 'duration-75', 'scale-95'].map(
       c => this.profileMenu.nativeElement.classList.toggle(c));
-    this.profileMenu.nativeElement.classList.toggle("hidden")
+    this.profileMenu.nativeElement.classList.toggle("hidden");
+    // ****************************************
+     ['ease-out', 'duration-100', 'scale-100'].map(
+      c => this.profileMenuSmall.nativeElement.classList.toggle(c));
+    ['ease-in', 'duration-75', 'scale-95'].map(
+      c => this.profileMenuSmall.nativeElement.classList.toggle(c));
+    this.profileMenuSmall.nativeElement.classList.toggle("hidden");
   }
   toggleProfileAdminMenu() {
     ['ease-out', 'duration-100', 'scale-100'].map(
       c => this.adminProfileMenu.nativeElement.classList.toggle(c));
     ['ease-in', 'duration-75', 'scale-95'].map(
       c => this.adminProfileMenu.nativeElement.classList.toggle(c));
-    this.adminProfileMenu.nativeElement.classList.toggle("hidden")
+    this.adminProfileMenu.nativeElement.classList.toggle("hidden");
+     ['ease-out', 'duration-100', 'scale-100'].map(
+      c => this.adminProfileMenuSmall.nativeElement.classList.toggle(c));
+    ['ease-in', 'duration-75', 'scale-95'].map(
+      c => this.adminProfileMenuSmall.nativeElement.classList.toggle(c));
+    this.adminProfileMenu.nativeElement.classList.toggle("hidden");
   }
   signOut() {
     this.authService.signOut();

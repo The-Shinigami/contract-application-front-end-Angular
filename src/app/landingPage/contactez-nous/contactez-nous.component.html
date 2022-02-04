@@ -1,8 +1,18 @@
-<div class="">
+<div *ngIf="load" class="">
   <div class="flex w-full h-5/6">
-    <div class="m-auto bg-white w-full h-full rounded-2xl">
+    <div class="m-auto bg-white w-full h-full rounded-2xl img-complaint">
       <div class="flex justify-center" style="margin-top:5%;">
         <form [formGroup]="reclamationForm" (ngSubmit)="onSubmit()">
+          <div class="relative text-center font-bold  pl-4 pr-10 leading-normal bg-red-400 rounded-lg" role="alert">
+            <p>{{alertMessage}}</p>
+            <span class="absolute inset-y-0 right-0 flex items-center mr-4">
+            </span>
+          </div>
+          <div class="relative text-center font-bold  pl-4 pr-10 leading-normal bg-green-400 rounded-lg" role="alert">
+            <p>{{successMessage}}</p>
+            <span class="absolute inset-y-0 right-0 flex items-center mr-4">
+            </span>
+          </div>
           <div>
             <div class="font-bold">Email(*dans lequelle on va envoyer la reponse)</div>
             <input type="text" class="border-2 border-slate-800 w-full rounded-lg" formControlName="email">
@@ -20,3 +30,9 @@
       </div>
     </div>
   </div>
+</div>
+<div *ngIf="!load" class="absolute left-0 top-0" style="width:100vw; height:100vh;">
+  <div class="bg-slate-400/50 w-full h-full flex">
+    <img class="animate-spin duration-75 delay-1000 m-auto w-44" src="/assets/imgs/load.png" alt="">
+  </div>
+</div>

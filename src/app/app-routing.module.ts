@@ -13,6 +13,7 @@ import { AdminListContratsComponent } from './espaceAdmin/gestionContrats/admin-
 import { ClientProduitsComponent } from './espaceClient/client-produits/client-produits.component';
 import { ListClientsComponent } from './espaceAdmin/gestionClients/list-clients/list-clients.component';
 import { ContactezNousComponent } from './landingPage/contactez-nous/contactez-nous.component';
+import { ListReclamationComponent } from './espaceAdmin/gestionReclamation/list-reclamation/list-reclamation.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'aProposDeNous', pathMatch: 'full', component: AProposDeNousComponent }, 
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'espaceAdminProfil', data: { role: 'ROLE_ADMIN' }, canActivate: [AuthGuardService], pathMatch: 'full', component: EspaceAdminComponent },
   { path: 'espaceAdminContrats', data: { role: 'ROLE_ADMIN' }, canActivate: [AuthGuardService], pathMatch: 'full', component: AdminListContratsComponent },
    { path: 'clientProduits',data: {role: 'ROLE_USER'},canActivate: [AuthGuardService], pathMatch: 'full', component: ClientProduitsComponent },
-    { path: 'espaceAdminClients',data: {role: 'ROLE_ADMIN'},canActivate: [AuthGuardService], pathMatch: 'full', component: ListClientsComponent},
+  { path: 'espaceAdminClients', data: { role: 'ROLE_ADMIN' }, canActivate: [AuthGuardService], pathMatch: 'full', component: ListClientsComponent },
+    { path: 'espaceAdminReclamation',data: {role: 'ROLE_ADMIN'},canActivate: [AuthGuardService], pathMatch: 'full', component: ListReclamationComponent},
 ];
 
 @NgModule({

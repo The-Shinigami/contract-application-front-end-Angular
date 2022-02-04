@@ -1,0 +1,7 @@
+.img-complaint {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%),
+    url("/assets/imgs/complaint.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: #fff;
+}

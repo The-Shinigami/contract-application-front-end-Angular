@@ -56,6 +56,10 @@ export class AuthService {
     document.getElementById("user-menu")?.classList.add("hidden");
     document.getElementById("admin-menu-button")?.classList.add("hidden");
     document.getElementById("admin-menu")?.classList.add("hidden");
+     document.getElementById("user-menu-button-small")?.classList.add("hidden");
+    document.getElementById("user-menu-small")?.classList.add("hidden");
+    document.getElementById("admin-menu-button-small")?.classList.add("hidden");
+    document.getElementById("admin-menu-small")?.classList.add("hidden");
     localStorage.removeItem("user");
     localStorage.removeItem("role");
     var urlsAdmin = document.getElementsByClassName("espace-admin-url");
@@ -76,6 +80,8 @@ export class AuthService {
         case "ROLE_USER":
           document.getElementById("user-menu-button")?.classList.remove("hidden");
           document.getElementById("user-menu")?.classList.remove("hidden");
+           document.getElementById("user-menu-button-small")?.classList.remove("hidden");
+          document.getElementById("user-menu-small")?.classList.remove("hidden");
           if ("espaceClient" == distanation) {
             this.router.navigate(['espaceClientProfil']);
           }
@@ -93,6 +99,8 @@ export class AuthService {
           if (this.metaMaskService.getAccounts().includes(this.utilisateur.getUser().account_address.toLowerCase())) {
             document.getElementById("admin-menu-button")?.classList.remove("hidden");
             document.getElementById("admin-menu")?.classList.remove("hidden");
+             document.getElementById("admin-menu-button-small")?.classList.remove("hidden");
+            document.getElementById("admin-menu-small")?.classList.remove("hidden");
             var urlsAdmin = document.getElementsByClassName("espace-admin-url");
             var urlsClient = document.getElementsByClassName("espace-client-url");
             for (let index = 0; index < urlsAdmin.length; index++) {

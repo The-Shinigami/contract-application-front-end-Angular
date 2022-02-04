@@ -10,6 +10,7 @@ export class ProduitService {
 
   constructor(public utilisateurService :UtilisateurService) { }
   async setProduits() {
+     axios.defaults.headers.common['Authorization'] = this.utilisateurService.getUser().accessToken;
   await  axios.get("http://localhost:9191/api/propreties/propreties/" + this.utilisateurService.getUser().id)
       .then(
         (response) => {

@@ -1,4 +1,4 @@
-<div class="grid grid-flow-col">
+<div *ngIf="load" class="grid grid-flow-col">
   <div class="grid grid-flow-row justify-center ">
     <div class="grid grid-flow-col justify-around  py-8">
       <app-chercher-contrat (contratsAfterRecherch)=setContracts($event) [contratsBeforeRecherch]=sourceContrats>
@@ -25,7 +25,12 @@
         </span>
         <!-- </div>                                                                                                      (postMessageEvent)=postMessage($event)                                                                      -->
       </div>
-    </div> 
+    </div>
   </div>
-   <div class="ml-2 img-clientContrats"></div>
+  <div class="ml-2 img-clientContrats"></div>
+</div>
+<div *ngIf="!load" class="absolute left-0 top-0" style="width:100vw; height:100vh;">
+  <div class="bg-slate-400/50 w-full h-full flex">
+    <img class="animate-spin duration-75 delay-1000 m-auto w-44" src="/assets/imgs/load.png" alt="">
+  </div>
 </div>
