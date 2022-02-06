@@ -183,7 +183,7 @@ export class AppComponent {
       c => this.adminProfileMenuSmall.nativeElement.classList.toggle(c));
     ['ease-in', 'duration-75', 'scale-95'].map(
       c => this.adminProfileMenuSmall.nativeElement.classList.toggle(c));
-    this.adminProfileMenu.nativeElement.classList.toggle("hidden");
+    this.adminProfileMenuSmall.nativeElement.classList.toggle("hidden");
   }
   signOut() {
     this.authService.signOut();

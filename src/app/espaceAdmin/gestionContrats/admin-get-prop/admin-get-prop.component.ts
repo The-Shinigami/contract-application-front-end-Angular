@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import axios from 'axios';
+import { DemoService } from 'src/app/Services/demo/demo.service';
 
 @Component({
   selector: 'app-admin-get-prop',
@@ -16,7 +17,7 @@ export class AdminGetPropComponent implements OnInit {
   produit: any;
   alertMessage: any = "";
   successMessage: any = "";
-  constructor() { }
+  constructor(private demo:DemoService) { }
 @Output()
 produitChercher = new EventEmitter(); 
    ngOnInit(): void {
@@ -39,6 +40,11 @@ produitChercher = new EventEmitter();
   onSubmit() {
     console.log(this.chercheForm.value);
     this.getProduit(this.chercheForm.value.idProduit);
+      this.modals = document.querySelectorAll(".get-produit-modal");   
+    this.modals.forEach((element: any) => {
+        element.classList.add("hidden");
+    }); 
+    this.demo.step5();
   }
 
  async getProduit(idProduit:string) {
@@ -52,7 +58,7 @@ produitChercher = new EventEmitter();
    
    setTimeout(() => {
      this.alertMessage = "",
-        this.successMessage = ""
+     this.successMessage = ""
    }, 1000);
   }
 }

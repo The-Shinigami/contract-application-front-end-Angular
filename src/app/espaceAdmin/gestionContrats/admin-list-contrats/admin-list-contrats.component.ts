@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { DetailContratComponent } from 'src/app/espaceContrat/detail-contrat/detail-contrat.component';
 import { ContratsService } from 'src/app/Services/contrats/contrats.service';
 import { AdminDetailContratComponent } from '../admin-detail-contrat/admin-detail-contrat.component';
 
+ 
 @Component({
   selector: 'app-admin-list-contrats',
   templateUrl: './admin-list-contrats.component.html',
   styleUrls: ['./admin-list-contrats.component.css']
 })
-export class AdminListContratsComponent implements OnInit {
+export class AdminListContratsComponent implements OnInit  {
   contrats: any = null;
   sourceContrats: any = {};
   load: boolean = false;
@@ -49,4 +50,5 @@ export class AdminListContratsComponent implements OnInit {
     });
    
   }
+
 }

@@ -14,6 +14,7 @@ import {
 import {
   ContratsService
 } from 'src/app/Services/contrats/contrats.service';
+import { DemoService } from 'src/app/Services/demo/demo.service';
 
 @Component({
   selector: 'app-admin-ajouter-contrat',
@@ -49,7 +50,7 @@ export class AdminAjouterContratComponent implements OnInit {
   @Output()
   callContrats = new EventEmitter();
 
-  constructor(public contratsService: ContratsService) {}
+  constructor(public contratsService: ContratsService, private demo:DemoService) {}
 
   ngOnInit(): void {
     this.modals = document.querySelectorAll(".ajouter-modal");
@@ -62,6 +63,7 @@ export class AdminAjouterContratComponent implements OnInit {
   hideModal(element: any) {
     element.querySelector(".close-modal").addEventListener('click', () => {
       element.classList.add("hidden");
+      this.demo.skip();
     });
   }
   showModal(element: any) {
@@ -79,11 +81,11 @@ export class AdminAjouterContratComponent implements OnInit {
       this.modals[this.pageNumber].classList.add("hidden");
       this.pageNumber = 0;
     }
-
+        this.demo.skip();
   }
   onSubmitBuyer() {
      this.contratsService.setNewContractBuyer(this.buyerForm.value);
-
+   
   }
   onSubmitSeller() {
     this.contratsService.setNewContractseller(this.sellerForm.value);
@@ -99,7 +101,7 @@ export class AdminAjouterContratComponent implements OnInit {
     this.contratsService.setNewContractCost(this.propForm.value.cost);   
     await this.contratsService.addNewContract();
     this.callContrats.emit(); 
-
+    this.demo.skip();
   }
   setSeller(seller: any) {
     this.contratsService.setContractSeller(seller);
@@ -127,5 +129,11 @@ export class AdminAjouterContratComponent implements OnInit {
     date: ""
     });
   }
-
+  
+  showDemo1() {
+    setTimeout(() => {
+      this.demo.step2();
+    }, 20);
+    
+  }
 }

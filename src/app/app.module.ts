@@ -29,6 +29,7 @@ import { ModifierClientComponent } from './espaceAdmin/gestionClients/modifier-c
 import { ContactezNousComponent } from './landingPage/contactez-nous/contactez-nous.component';
 import { ListReclamationComponent } from './espaceAdmin/gestionReclamation/list-reclamation/list-reclamation.component';
 import { RepondreReclamationComponent } from './espaceAdmin/gestionReclamation/repondre-reclamation/repondre-reclamation.component';
+import { DemoComponent } from './espaceAdmin/gestionContrats/demo/demo.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { RepondreReclamationComponent } from './espaceAdmin/gestionReclamation/r
     ContactezNousComponent,
     ListReclamationComponent,
     RepondreReclamationComponent,
+    DemoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import axios from 'axios';
+import { DemoService } from 'src/app/Services/demo/demo.service';
 
 @Component({
   selector: 'app-admin-get-client',
@@ -9,13 +10,18 @@ import axios from 'axios';
 })
 export class AdminGetClientComponent implements OnInit {
   modals: any;
+   static count = 0;
+  order = 0;
    chercheForm = new FormGroup({
        username: new FormControl('')
    })
   client: any;
   alertMessage: any = "";
   successMessage: any = "";
-  constructor() { }
+  constructor(private demo: DemoService) {
+     this.order =  AdminGetClientComponent.count;
+     AdminGetClientComponent.count++; 
+   }
 @Output()
 clientChercher = new EventEmitter();
   
@@ -37,8 +43,17 @@ clientChercher = new EventEmitter();
     });
   }
   onSubmit() {
-    console.log(this.chercheForm.value);
     this.getClient(this.chercheForm.value.username);
+    if(this.order == 0)
+    {setTimeout(() => {    
+      this.demo.step2();
+    }, 1000);
+    }
+    else if (this.order == 1) {
+      setTimeout(() => {    
+      this.demo.step4();
+    }, 1200);
+    }
   }
 
  async getClient(username:string) {
@@ -56,6 +71,12 @@ clientChercher = new EventEmitter();
         this.successMessage = ""
    }, 1000);
 
+ }
+  
+  showDemo() {
+    setTimeout(() => {
+      this.demo.step3(this.order);
+    },20);  
   }
 
 }
