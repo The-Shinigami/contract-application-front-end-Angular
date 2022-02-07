@@ -63,7 +63,6 @@ export class AdminAjouterContratComponent implements OnInit {
   hideModal(element: any) {
     element.querySelector(".close-modal").addEventListener('click', () => {
       element.classList.add("hidden");
-      this.demo.skip();
     });
   }
   showModal(element: any) {
@@ -80,8 +79,8 @@ export class AdminAjouterContratComponent implements OnInit {
     } else {
       this.modals[this.pageNumber].classList.add("hidden");
       this.pageNumber = 0;
-    }
         this.demo.skip();
+    }
   }
   onSubmitBuyer() {
      this.contratsService.setNewContractBuyer(this.buyerForm.value);
@@ -135,5 +134,9 @@ export class AdminAjouterContratComponent implements OnInit {
       this.demo.step2();
     }, 20);
     
+  }
+
+  skip() {
+    this.demo.skip();
   }
 }

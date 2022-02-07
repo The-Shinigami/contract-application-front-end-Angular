@@ -31,7 +31,7 @@ export class DemoService {
     this.line =  new LeaderLine(start,end,{dash: {animation: true},dropShadow: true,color: 'black', size: 5});
     }
   }
-  step3(order:any) {
+  step3(order: any) {
     document.getElementById("end_2")?.classList.remove('absolute');     
     document.getElementById("start_2")?.classList.add('hidden');  
     document.getElementById("start_1")?.classList.add('hidden'); 
@@ -48,7 +48,7 @@ export class DemoService {
     
     }
   }
-   step4() {
+  step4() {
     document.getElementById("end_3")?.classList.remove('absolute');     
     document.getElementById("start_2")?.classList.add('hidden');  
      document.getElementById("start_1")?.classList.add('hidden'); 
@@ -62,7 +62,7 @@ export class DemoService {
     
     }
    }
-    step5() {
+  step5() {
     document.getElementById("end_4")?.classList.remove('absolute');     
     document.getElementById("start_2")?.classList.add('hidden');  
      document.getElementById("start_1")?.classList.add('hidden'); 
@@ -73,8 +73,7 @@ export class DemoService {
     this.line.remove();
       var start = document.getElementById("start_5");   
       var end = document.getElementById("end_5"); 
-      this.line =  new LeaderLine(start,end,{dash: {animation: true},dropShadow: true,color: 'black', size: 5});
-    
+      this.line =  new LeaderLine(start,end,{dash: {animation: true},dropShadow: true,color: 'black', size: 5});  
     }
   }
   

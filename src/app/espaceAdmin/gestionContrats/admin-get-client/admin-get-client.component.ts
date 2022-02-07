@@ -42,18 +42,17 @@ clientChercher = new EventEmitter();
       element.classList.remove("hidden");
     });
   }
-  onSubmit() {
-    this.getClient(this.chercheForm.value.username);
-    if(this.order == 0)
-    {setTimeout(() => {    
-      this.demo.step2();
-    }, 1000);
-    }
+   onSubmit() { 
+     this.getClient(this.chercheForm.value.username);
+      
+      if(this.order == 0) 
+      {
+       setTimeout(() => { this.demo.step2();}, 1000);
+      }
     else if (this.order == 1) {
-      setTimeout(() => {    
-      this.demo.step4();
-    }, 1200);
+    setTimeout(() => {  this.demo.step4();}, 1000);
     }
+   
   }
 
  async getClient(username:string) {
@@ -62,6 +61,7 @@ clientChercher = new EventEmitter();
        this.client = response.data,
          this.successMessage = "Les données du client sont récupérées",
          this.clientChercher.emit(this.client)
+        
    }
    ).catch(()=>this.alertMessage = "Client n'exist pas"
    )
@@ -70,13 +70,13 @@ clientChercher = new EventEmitter();
      this.alertMessage = "",
         this.successMessage = ""
    }, 1000);
-
+  
  }
   
   showDemo() {
     setTimeout(() => {
       this.demo.step3(this.order);
-    },20);  
+    },200);  
   }
 
 }
