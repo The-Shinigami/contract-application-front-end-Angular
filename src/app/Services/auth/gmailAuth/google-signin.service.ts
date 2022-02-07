@@ -8,9 +8,6 @@ export class GoogleSigninService {
   public error: string;
   public user: gapi.auth2.GoogleUser;
 
- 
-
-
   constructor() {
     this.ngOnInit();
   }
