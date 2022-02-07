@@ -12,7 +12,7 @@
     <button (click)="skip()" class="bg-slate-500 rounded-2xl p-1 relative top-3">skip</button>
   </div>
 </div>
-<div id="start_3" class="hidden bg-white rounded-2xl absolute top-1/2 left-0 p-9 font-bold z-20">
+<div id="start_3" class="hidden bg-white rounded-2xl absolute top-1/4 left-0 p-9 font-bold z-20">
   Taper ici username du client pour récupérer ses donnes
   <div>
     <button (click)="skip()" class="bg-slate-500 rounded-2xl p-1 relative top-3">skip</button>
@@ -29,4 +29,22 @@
   <div>
     <button (click)="skip()" class="bg-slate-500 rounded-2xl p-1 relative top-3">skip</button>
   </div>
+</div>
+<div id="start_6" style="z-index: 5000;" class="hidden absolute w-full h-full left-0 rounded-2xl  right-0 p-9 font-bold">
+  <!--The content below is only a placeholder and can be replaced.-->
+  <div class="bg-white m-auto flex rounded-2xl opacity-90 w-1/4" style="height:70vh;">
+    <div class="m-auto">
+      <div class="checkmark-circle relative left-5">
+        <div class="background"></div>
+        <div class="checkmark draw"></div>
+      </div>
+      <div class="text-center">
+        <h1>Congratulations!</h1>
+        <p>You are all set. Well done!</p>
+        <button class="bg-gray-500 rounded-2xl w-full z-50" (click)="endDemo()">Continue</button>
+      </div>
+    </div>
+  </div>
+  <ng-particles   id="tsparticles" [options]="options" (particlesInit)="particlesInit($event)">
+  </ng-particles>
 </div>

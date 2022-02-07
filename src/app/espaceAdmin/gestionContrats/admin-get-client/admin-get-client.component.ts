@@ -42,15 +42,15 @@ clientChercher = new EventEmitter();
       element.classList.remove("hidden");
     });
   }
-   onSubmit() { 
-     this.getClient(this.chercheForm.value.username);
+  async onSubmit() { 
+  await   this.getClient(this.chercheForm.value.username);
       
       if(this.order == 0) 
       {
-       setTimeout(() => { this.demo.step2();}, 1000);
+       setTimeout(() => { this.demo.step2();}, 500);
       }
     else if (this.order == 1) {
-    setTimeout(() => {  this.demo.step4();}, 1000);
+    setTimeout(() => {  this.demo.step4();}, 1500);
     }
    
   }

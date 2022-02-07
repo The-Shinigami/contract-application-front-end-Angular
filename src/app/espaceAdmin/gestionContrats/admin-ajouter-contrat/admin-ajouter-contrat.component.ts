@@ -79,7 +79,6 @@ export class AdminAjouterContratComponent implements OnInit {
     } else {
       this.modals[this.pageNumber].classList.add("hidden");
       this.pageNumber = 0;
-        this.demo.skip();
     }
   }
   onSubmitBuyer() {
@@ -100,7 +99,8 @@ export class AdminAjouterContratComponent implements OnInit {
     this.contratsService.setNewContractCost(this.propForm.value.cost);   
     await this.contratsService.addNewContract();
     this.callContrats.emit(); 
-    this.demo.skip();
+    this.demo.step6();
+    this.demo.play();
   }
   setSeller(seller: any) {
     this.contratsService.setContractSeller(seller);

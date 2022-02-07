@@ -30,6 +30,7 @@ import { ContactezNousComponent } from './landingPage/contactez-nous/contactez-n
 import { ListReclamationComponent } from './espaceAdmin/gestionReclamation/list-reclamation/list-reclamation.component';
 import { RepondreReclamationComponent } from './espaceAdmin/gestionReclamation/repondre-reclamation/repondre-reclamation.component';
 import { DemoComponent } from './espaceAdmin/gestionContrats/demo/demo.component';
+import { NgParticlesModule } from "ng-particles";
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { DemoComponent } from './espaceAdmin/gestionContrats/demo/demo.component
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-     ReactiveFormsModule
+    ReactiveFormsModule,
+     NgParticlesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

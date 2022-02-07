@@ -1,8 +1,8 @@
-<body>
+<body >
   <div class="content" role="main">
 
     <div class="min-h-full">
-      <nav class="bg-lightGray-100">
+      <nav class="bg-lightGray-100" >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-16">
             <div class="flex items-center">
@@ -91,7 +91,7 @@
                   To: "transform opacity-0 scale-95"
               -->
                   <div #profileMenu
-                    class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none transition  ease-in duration-75  scale-95 transform "
+                   style="z-index: 500;" class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none transition  ease-in duration-75  scale-95 transform "
                     id="user-menu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                     tabindex="-1">
 
@@ -111,7 +111,7 @@
                   </div>
                   <!-- admin profile menu -->
                   <div #adminProfileMenu
-                    class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none transition  ease-in duration-75  scale-95 transform "
+                  style="z-index: 500;"  class="hidden z-30 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-black ring-opacity-5 focus:outline-none transition  ease-in duration-75  scale-95 transform "
                     id="admin-menu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                     tabindex="-1">
 
@@ -166,7 +166,7 @@
         </div>
 
         <!-- Mobile menu, show/hide based on menu state. -->
-        <div #mobileMenu class="hidden md:hidden d-none" id="mobile-menu">
+        <div style="z-index: 500;" #mobileMenu class="hidden md:hidden d-none" id="mobile-menu">
           <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
 
@@ -243,8 +243,8 @@
                     alt="">
                 </button>
               </div>
-              <div #profileMenuSmall
-                class="hidden mt-52 absolute right-0  w-48  rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none transition  ease-in duration-75  scale-95 transform "
+              <div style="z-index: 500;" #profileMenuSmall
+                class="z-30 hidden mt-52 absolute right-0  w-48  rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none transition  ease-in duration-75  scale-95 transform "
                 id="user-menu-small" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                 tabindex="-1">
 
@@ -263,7 +263,7 @@
                   role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
               </div>
               <!-- admin profile menu -->
-              <div #adminProfileMenuSmall
+              <div style="z-index: 500;" #adminProfileMenuSmall
                 class="hidden mt-52 absolute right-0  w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none transition  ease-in duration-75  scale-95 transform "
                 id="admin-menu-small" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                 tabindex="-1">
@@ -298,12 +298,13 @@
           </div>
         </div>
       </nav>
-
+   <div id="end"></div>
+    <div id="start"></div>
 
       <main>
         <div class="max-w-7xl mx-auto  ">
           <!-- Replace with your content -->
-          <div>
+          <div >
 
             <router-outlet></router-outlet>
 
@@ -312,6 +313,43 @@
         </div>
       </main>
     </div>
+    <!-- footer -->
+   <div>
+            <footer class="bg-white text-center text-black">
+                <!-- Grid container -->
+
+                <div class="container p-4" style="padding-bottom: 1px;">
+                    <!-- Section: Social media -->
+                    <section class="mb-2">
+                        <!-- Facebook -->
+                        <a class="btn btn-outline-dark btn-floating m-3" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+
+                        <!-- Twitter -->
+                        <a class="btn btn-outline-dark btn-floating m-3" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+
+                        <!-- Google -->
+                        <a class="btn btn-outline-dark btn-floating m-3" href="#!" role="button"><i class="fab fa-google"></i></a>
+
+                        <!-- Instagram -->
+                        <a class="btn btn-outline-dark btn-floating m-3" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+
+                        <!-- Linkedin -->
+                        <a class="btn btn-outline-dark btn-floating m-3" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+
+                        <!-- Github -->
+                        <a class="btn btn-outline-dark btn-floating m-3" href="#!" role="button"><i class="fab fa-github"></i></a>
+                    </section>
+                </div>
+
+                <!-- Copyright -->
+                <div class="text-center text-black p-3" style="background-color:white; font-weight: bold;">
+                    © 2022 Copyright:
+                    <a class="text-black" style="font-weight: bold;" href="https://RiseUp.com/">RiseUp.com</a>
+                </div>
+
+            </footer>
+        </div>
+
 
   </div>
 </body>

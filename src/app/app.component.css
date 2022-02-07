@@ -22,3 +22,7 @@ body {
 .under-line-lightMotard:hover{
   border-bottom: 3px solid var(--lightMotard);
 }
+
+footer {
+  opacity: 0.4;
+}

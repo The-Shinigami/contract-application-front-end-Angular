@@ -6,15 +6,26 @@ declare let LeaderLine: any;
 })
 export class DemoService {
  
-  private line:any;
-  constructor() {   
+  private line: any;
+  private audio: any;
+  private skipState = false;
+  constructor() { 
+    if (localStorage.getItem('demo') == "done") {
+      this.skipState = true;
+    }
    }
-  skipState = false;
   step1() {
-    document.getElementById("start_1")?.classList.remove('hidden');
-    var start = document.getElementById("start_1");
-    var end = document.getElementById("end_1");
-    this.line =  new LeaderLine(start,end,{dash: {animation: true},dropShadow: true,color: 'black', size: 5});
+    localStorage.setItem('demo', 'done');
+    if (!this.skipState) {
+      document.getElementById("start_1")?.classList.remove('hidden');
+      var start = document.getElementById("start_1");
+      var end = document.getElementById("end_1");
+      this.line = new LeaderLine(start, end, { dash: { animation: true }, dropShadow: true, color: 'black', size: 5 });
+    } else {
+       document.getElementById("demo")?.classList.remove('w-full');   
+      document.getElementById("demo")?.classList.remove('h-full');  
+     document.getElementById("end_1")?.classList.remove('absolute');   
+    }
   }
   
   step2() {
@@ -76,6 +87,15 @@ export class DemoService {
       this.line =  new LeaderLine(start,end,{dash: {animation: true},dropShadow: true,color: 'black', size: 5});  
     }
   }
+  step6() {    
+    document.getElementById("end_1")?.classList.remove('absolute');  
+     document.getElementById("demo")?.classList.remove('w-full');   
+    document.getElementById("demo")?.classList.remove('h-full'); 
+    if (!this.skipState) { 
+    document.getElementById("start_6")?.classList.remove('hidden');
+    }
+    this.skip();
+  }
   
   
   getLine() {
@@ -86,6 +106,7 @@ export class DemoService {
   }
 
   skip() {
+    this.line.remove()
     document.getElementById("start_1")?.classList.add('hidden');
     document.getElementById("start_2")?.classList.add('hidden');
     document.getElementById("start_3")?.classList.add('hidden');
@@ -93,7 +114,22 @@ export class DemoService {
     document.getElementById("start_5")?.classList.add('hidden');
     document.getElementById("end_1")?.classList.remove('absolute');
     document.getElementById("demo")?.classList.add('hidden');
-    this.getLine().remove();
+    var start = document.getElementById("start");   
+      var end = document.getElementById("end"); 
+     this.line =  new LeaderLine( start,end,{dash: {animation: true},dropShadow: true,color: 'black', size: 1});  
+    this.line.remove()
     this.skipState = true;
+  }
+
+  play() {
+    this.audio = new Audio();
+    this.audio.src = "../../assets/audio/cong.mp3";
+    console.log(this.audio)
+    this.audio.load();
+    this.audio.play();
+   }
+  stop() {
+    this.audio.pause();
+    this.audio = null;
   }
 }

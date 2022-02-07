@@ -44,10 +44,10 @@ export class ContratsService {
     return this.contrats
 }
   public async getAllForUser() {   
-    await this.getAllAsBuyer();
-    await this.getAllAsSeller();
-    
-     this.contrats = this.contrats_1.concat(this.contrats_2);
+      await this.getAllAsSeller();  
+      await this.getAllAsBuyer();
+  
+   this.contrats = this.contrats_1.concat(this.contrats_2);
    return this.contrats
   }
 
