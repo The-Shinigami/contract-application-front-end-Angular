@@ -22,7 +22,9 @@ export class AppComponent {
   @ViewChild('profileMenu') profileMenu: ElementRef<HTMLInputElement> = {} as ElementRef;
    @ViewChild('profileMenuSmall') profileMenuSmall: ElementRef<HTMLInputElement> = {} as ElementRef;
   @ViewChild('adminProfileMenu') adminProfileMenu: ElementRef<HTMLInputElement> = {} as ElementRef;
-  @ViewChild('adminProfileMenuSmall') adminProfileMenuSmall : ElementRef<HTMLInputElement> = {} as ElementRef;
+  @ViewChild('adminProfileMenuSmall') adminProfileMenuSmall: ElementRef<HTMLInputElement> = {} as ElementRef;
+   @ViewChild('darkModeIconeSmall') darkModeIconeSmall: ElementRef<HTMLInputElement> = {} as ElementRef;
+  @ViewChild('darkModeIcone') darkModeIcone : ElementRef<HTMLInputElement> = {} as ElementRef;
   @HostBinding("style.--lightGray") 
   lighitGray: string = '';
   @HostBinding("style.--textColor") 
@@ -142,7 +144,10 @@ export class AppComponent {
        this.toggleDarkUrlSmall.nativeElement.setAttribute("src", "/assets/imgs/toggle-on.svg");
       this.toggleDarkUrlSmall.nativeElement.setAttribute("style",
         "filter: invert(0%) sepia(83%) saturate(7500%) hue-rotate(210deg) brightness(115%) contrast(115%);");
-      this.logoUrl.nativeElement.setAttribute("src","/assets/imgs/logo_dark.png")
+      this.logoUrl.nativeElement.setAttribute("src", "/assets/imgs/logo_dark.png");
+      
+       this.darkModeIconeSmall.nativeElement.setAttribute("src", "/assets/imgs/day.png");
+      this.darkModeIcone.nativeElement.setAttribute("src", "/assets/imgs/day.png");
     } 
     else if (this.lighitGray == this.cssColors.lightGray|| this.lighitGray == '' )
     {
@@ -155,7 +160,10 @@ export class AppComponent {
         this.toggleDarkUrlSmall.nativeElement.setAttribute("style",
           "filter: invert(100%) sepia(65%) saturate(2%) hue-rotate(310deg) brightness(109%) contrast(101%);");
 
-      this.logoUrl.nativeElement.setAttribute("src","/assets/imgs/logo.png")
+      this.logoUrl.nativeElement.setAttribute("src", "/assets/imgs/logo.png")
+      
+      this.darkModeIconeSmall.nativeElement.setAttribute("src", "/assets/imgs/night.png");
+      this.darkModeIcone.nativeElement.setAttribute("src", "/assets/imgs/night.png");
     }
       
    

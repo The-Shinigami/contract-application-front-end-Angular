@@ -43,17 +43,22 @@ export class ContratsService {
       )
     return this.contrats
 }
-  public async getAllForUser() {   
+  public async getAllForUser() {  
+    setTimeout(async() => {
       await this.getAllAsSeller();  
       await this.getAllAsBuyer();
+    }, 500);
   
    this.contrats = this.contrats_1.concat(this.contrats_2);
    return this.contrats
   }
 
   async getAllAsSeller() {
+    
      axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
-          await  this.api.get("/contrat/listAsSeller/"+this.utilisateur.getUser().id).then(
+    console.log("token seller" + this.utilisateur.getUser().accessToken);
+    console.log('id' + this.utilisateur.getUser().id);
+    await this.api.get("/contrat/listAsSeller/" + this.utilisateur.getUser().id).then(
             (response) => {
               this.contrats_1 = response.data;
             }
@@ -62,7 +67,9 @@ export class ContratsService {
  async getAllAsBuyer() {
     var contracts_2 : any =[];
      axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
-          await this.api.get("/contrat/listAsBuyer/"+this.utilisateur.getUser().id).then(
+   console.log("token buyer" + this.utilisateur.getUser().accessToken); 
+   console.log('id' + this.utilisateur.getUser().id);
+   await this.api.get("/contrat/listAsBuyer/" + this.utilisateur.getUser().id).then(
             (response) => {
               this.contrats_2 = response.data
             }
