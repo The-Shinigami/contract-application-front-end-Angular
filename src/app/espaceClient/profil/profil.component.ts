@@ -24,7 +24,6 @@ export class ProfilComponent implements OnInit {
   ngOnInit(): void {
     this.utilisateur = this.utilisateurService.getUser();
     this.utilisateur.role = this.utilisateurService.getRole();
-    var role = this.utilisateur.roles[0].name == "ROLE_ADMIN" ||this.utilisateur.roles[0].name == "admin" ? "admin" : "user";
     this.userForm.setValue({
   id_user:this.utilisateur.id,
   nom:this.utilisateur.nom,
@@ -33,7 +32,7 @@ export class ProfilComponent implements OnInit {
   password: this.utilisateur.password,
   cin: this.utilisateur.cin,
   tel: this.utilisateur.tel,
-    roles : role
+    roles : this.utilisateur.role
     })
   }
   onSubmit() {
@@ -58,7 +57,7 @@ export class ProfilComponent implements OnInit {
   password:user.password,
   cin: user.cin,
   tel:user.tel,
-    roles :this.utilisateur.roles
+    role :this.userForm.value.roles
     }
   this.utilisateur = client;
   }

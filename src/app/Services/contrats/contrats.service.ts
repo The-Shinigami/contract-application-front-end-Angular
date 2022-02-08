@@ -48,8 +48,14 @@ export class ContratsService {
       await this.getAllAsSeller();  
       await this.getAllAsBuyer();
     }, 500);
-  
-   this.contrats = this.contrats_1.concat(this.contrats_2);
+    if (this.contrats_1 == null) {
+      this.contrats = this.contrats_2;
+    } else if(this.contrats_2 ==  null) {
+      this.contrats = this.contrats_1;
+    }else {
+      this.contrats = this.contrats_1.concat(this.contrats_2);
+    }
+   
    return this.contrats
   }
 
