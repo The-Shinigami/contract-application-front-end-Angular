@@ -45,7 +45,7 @@ export class AuthComponent implements OnInit {
   async signIn() {
   /*  await this.signInService.getToken();*/
     await this.signInService.signIn();   
-    console.log(this.signInService.user.getBasicProfile());
+
   }
   
 

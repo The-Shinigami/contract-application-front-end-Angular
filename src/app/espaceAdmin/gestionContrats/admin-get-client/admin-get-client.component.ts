@@ -65,7 +65,6 @@ clientChercher = new EventEmitter();
    }
    ).catch(()=>this.alertMessage = "Client n'exist pas"
    )
-   console.log(this.client);
    setTimeout(() => {
      this.alertMessage = "",
         this.successMessage = ""

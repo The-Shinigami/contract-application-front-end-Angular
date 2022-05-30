@@ -5,6 +5,7 @@ import {
   Router
 } from '@angular/router';
 import axios from 'axios';
+import { DemoService } from '../demo/demo.service';
 import {
   UtilisateurService
 } from '../utilisateur/utilisateur.service';
@@ -21,7 +22,7 @@ export class AuthService {
   isAuthenticated = false;
   public message: string = "";
 
-  constructor(public utilisateur: UtilisateurService, public router: Router, public metaMaskService: MetaMaskService) {
+  constructor(public utilisateur: UtilisateurService, public router: Router, public metaMaskService: MetaMaskService,private demoService:DemoService) {
     if (localStorage.getItem('user') != null) {
       utilisateur.setUser(JSON.parse(localStorage.getItem('user') + ""));
       utilisateur.setRole(localStorage.getItem('role') + "".toLowerCase());
@@ -72,68 +73,73 @@ export class AuthService {
     }
 
     await this.api.post("/signout", this.utilisateur.getUser());
+    this.demoService.skip()
+    
   }
 
   async redirect(distanation: string) {
-    if (this.utilisateur.getIsLogged()) {
-      switch (this.utilisateur.getUser().roles[0]) {
-        case "ROLE_USER":
-          document.getElementById("user-menu-button")?.classList.remove("hidden");
-          document.getElementById("user-menu")?.classList.remove("hidden");
-           document.getElementById("user-menu-button-small")?.classList.remove("hidden");
-          document.getElementById("user-menu-small")?.classList.remove("hidden");
-          if ("espaceClient" == distanation) {
-            this.router.navigate(['espaceClientProfil']);
-          }
-          var urlsAdmin = document.getElementsByClassName("espace-admin-url");
-          var urlsClient = document.getElementsByClassName("espace-client-url");
-          for (let index = 0; index < urlsAdmin.length; index++) {
-            const elementAdmin = urlsAdmin[index];
-            const elementClient = urlsClient[index];
-            elementAdmin.classList.add("hidden");
-            elementClient.classList.remove("hidden")
-          }
-          break;
-        case "ROLE_ADMIN":
-          await this.metaMaskService.signInWithMetaMask();
-          if (this.metaMaskService.getAccounts().includes(this.utilisateur.getUser().account_address.toLowerCase())) {
-            document.getElementById("admin-menu-button")?.classList.remove("hidden");
-            document.getElementById("admin-menu")?.classList.remove("hidden");
-             document.getElementById("admin-menu-button-small")?.classList.remove("hidden");
-            document.getElementById("admin-menu-small")?.classList.remove("hidden");
+    if (localStorage.getItem('user') != null) {
+      if (this.utilisateur.getIsLogged()) {
+        switch (this.utilisateur.getUser().roles[0]) {
+          case "ROLE_USER":
+            document.getElementById("user-menu-button")?.classList.remove("hidden");
+            document.getElementById("user-menu")?.classList.remove("hidden");
+            document.getElementById("user-menu-button-small")?.classList.remove("hidden");
+            document.getElementById("user-menu-small")?.classList.remove("hidden");
+            if ("espaceClient" == distanation) {
+              this.router.navigate(['espaceClientProfil']);
+            }
             var urlsAdmin = document.getElementsByClassName("espace-admin-url");
             var urlsClient = document.getElementsByClassName("espace-client-url");
             for (let index = 0; index < urlsAdmin.length; index++) {
               const elementAdmin = urlsAdmin[index];
               const elementClient = urlsClient[index];
-              elementAdmin.classList.remove("hidden");
-              elementClient.classList.add("hidden")
-              if ("espaceAdmin" == distanation) {
-                this.router.navigate(['espaceAdminProfil']);
-              } else {
-                this.message = "Verifier vos données"
-                this.utilisateur.setIsLogged(false)
-              }
+              elementAdmin.classList.add("hidden");
+              elementClient.classList.remove("hidden")
             }
+            break;
+          case "ROLE_ADMIN":
+            /* await this.metaMaskService.signInWithMetaMask(); */
+            /*  if (this.metaMaskService.getAccounts().includes(this.utilisateur.getUser().account_address.toLowerCase())) { */
+            if (true) {
+              document.getElementById("admin-menu-button")?.classList.remove("hidden");
+              document.getElementById("admin-menu")?.classList.remove("hidden");
+              document.getElementById("admin-menu-button-small")?.classList.remove("hidden");
+              document.getElementById("admin-menu-small")?.classList.remove("hidden");
+              var urlsAdmin = document.getElementsByClassName("espace-admin-url");
+              var urlsClient = document.getElementsByClassName("espace-client-url");
+              for (let index = 0; index < urlsAdmin.length; index++) {
+                const elementAdmin = urlsAdmin[index];
+                const elementClient = urlsClient[index];
+                elementAdmin.classList.remove("hidden");
+                elementClient.classList.add("hidden")
+                if ("espaceAdmin" == distanation) {
+                  this.router.navigate(['espaceAdminProfil']);
+                } else {
+                  this.message = "Verifier vos données"
+                  this.utilisateur.setIsLogged(false)
+                }
+              }
 
-          } else {
-            this.message = "Verifier votre walet ,compte introuvable";
-            this.utilisateur.setIsLogged(false);
-          }
-          break
-        default:
-          break;
+            } else {
+              this.message = "Verifier votre walet ,compte introuvable";
+              this.utilisateur.setIsLogged(false);
+            }
+            break
+          default:
+            break;
+        }
       }
     }
-
   }
 
   public redirectSRole() {
-    if (this.utilisateur.getRole() == "user") {
+     if (localStorage.getItem('user') != null) {
+     if (this.utilisateur.getRole() == "user") {
       this.redirect("espaceClient");
     } else if (this.utilisateur.getRole() == "admin") {
       this.redirect("espaceAdmin");
     }
-
+    }
   }
 }

@@ -38,7 +38,6 @@ produitChercher = new EventEmitter();
     });
   }
   onSubmit() {
-    console.log(this.chercheForm.value);
     this.getProduit(this.chercheForm.value.idProduit);
       this.modals = document.querySelectorAll(".get-produit-modal");   
     this.modals.forEach((element: any) => {

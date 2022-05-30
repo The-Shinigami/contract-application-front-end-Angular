@@ -124,7 +124,6 @@ export class DemoService {
   play() {
     this.audio = new Audio();
     this.audio.src = "../../assets/audio/cong.mp3";
-    console.log(this.audio)
     this.audio.load();
     this.audio.play();
    }

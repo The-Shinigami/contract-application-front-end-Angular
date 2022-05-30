@@ -49,7 +49,7 @@ export class AdminAjouterContratComponent implements OnInit {
 
   @Output()
   callContrats = new EventEmitter();
-
+load: boolean = true;
   constructor(public contratsService: ContratsService, private demo:DemoService) {}
 
   ngOnInit(): void {
@@ -89,6 +89,7 @@ export class AdminAjouterContratComponent implements OnInit {
     this.contratsService.setNewContractseller(this.sellerForm.value);
   }
   async onSubmitProp() {
+      this.load = false;
     if(localStorage.getItem("prop") == null)
     { await  this.contratsService.setNewContractProp({
          typePrp: this.propForm.value.typePrp,
@@ -100,6 +101,7 @@ export class AdminAjouterContratComponent implements OnInit {
     await this.contratsService.addNewContract();
     this.callContrats.emit(); 
     this.demo.step6();
+      this.load = true;
     this.demo.play();
   }
   setSeller(seller: any) {

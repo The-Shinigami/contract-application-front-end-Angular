@@ -17,7 +17,6 @@ import { ContratsComponent } from './espaceClient/contrats/contrats.component';
 import { EspaceAdminComponent } from './espaceAdmin/espace-admin/espace-admin.component';
 import { AdminListContratsComponent } from './espaceAdmin/gestionContrats/admin-list-contrats/admin-list-contrats.component';
 import { AdminDetailContratComponent } from './espaceAdmin/gestionContrats/admin-detail-contrat/admin-detail-contrat.component';
-import { AdminModifierContratComponent } from './espaceAdmin/gestionContrats/admin-modifier-contrat/admin-modifier-contrat.component';
 import { AdminAjouterContratComponent } from './espaceAdmin/gestionContrats/admin-ajouter-contrat/admin-ajouter-contrat.component';
 import { ProfilAdminComponent } from './espaceAdmin/profil-admin/profil-admin.component';
 import { ClientDetailContratComponent } from './espaceClient/client-detail-contrat/client-detail-contrat.component';
@@ -48,7 +47,6 @@ import { NgParticlesModule } from "ng-particles";
     EspaceAdminComponent,
     AdminListContratsComponent,
     AdminDetailContratComponent,
-    AdminModifierContratComponent,
     AdminAjouterContratComponent,
     ProfilAdminComponent,
     ClientDetailContratComponent,

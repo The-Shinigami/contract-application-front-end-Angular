@@ -1,4 +1,4 @@
-<div class="text-black">
+<div  class="text-black">
   <button class="show-modal" (click)="showDemo1()">
     <div
       class="grid grid-flow-col justify-between border-gray-500 border-b-2  rounded-xl px-8 py-1 shadow bg-lightGray-100">
@@ -120,5 +120,10 @@
         </form>
       </div>
     </div>
+  </div>
+</div>
+<div *ngIf="!load" class="absolute left-0 top-0" style="width:100vw; height:100vh;">
+  <div class="bg-slate-400/50 w-full h-screen flex">
+    <img class="animate-spin duration-75 delay-1000 m-auto w-44" src="/assets/imgs/load.png" alt="">
   </div>
 </div>

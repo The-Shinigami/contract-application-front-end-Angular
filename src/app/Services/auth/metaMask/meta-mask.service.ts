@@ -11,7 +11,7 @@ export class MetaMaskService {
    }
   public async signInWithMetaMask() {
     if (typeof this.window.ethereum !== 'undefined') {
-      console.log('MetaMask is installed!');
+
       let accounts = await this.window.ethereum.request({ method: "eth_requestAccounts" })
       this.accounts = accounts;
     }

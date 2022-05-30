@@ -10,8 +10,11 @@ export class ClientsService {
  api = axios.create({ baseURL: 'http://localhost:9191/api/users' })
   constructor(private utilisateur:UtilisateurService) { }
   async setClients() {
-  axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
-  await  this.api.get("/users")
+    axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
+    await this.api.get("/users", {
+    headers: {
+      'Authorization': this.utilisateur.getUser().accessToken
+    }})
       .then(
         (response) => {
           this.clients = response.data;
@@ -25,8 +28,7 @@ export class ClientsService {
      axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
     await  this.api.put("/updateUser/"+client.id_user,client)
       .then(
-        (response) => {
-          console.log(response.data)
+        () => {
       }
     )
   }

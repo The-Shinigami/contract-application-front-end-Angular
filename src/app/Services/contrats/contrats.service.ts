@@ -44,10 +44,8 @@ export class ContratsService {
     return this.contrats
 }
   public async getAllForUser() {  
-    setTimeout(async() => {
-      await this.getAllAsSeller();  
-      await this.getAllAsBuyer();
-    }, 500);
+      this.contrats_1  = await this.getAllAsSeller();  
+      this.contrats_2 = await this.getAllAsBuyer();
     if (this.contrats_1 == null) {
       this.contrats = this.contrats_2;
     } else if(this.contrats_2 ==  null) {
@@ -61,21 +59,25 @@ export class ContratsService {
 
   async getAllAsSeller() {
     
-     axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
-    console.log("token seller" + this.utilisateur.getUser().accessToken);
-    console.log('id' + this.utilisateur.getUser().id);
-    await this.api.get("/contrat/listAsSeller/" + this.utilisateur.getUser().id).then(
+   
+    await this.api.get("/contrat/listAsSeller/" + this.utilisateur.getUser().id, {
+    headers: {
+    'Authorization': this.utilisateur.getUser().accessToken
+    }
+  }).then(
             (response) => {
               this.contrats_1 = response.data;
             }
-          )
+    )
+    return this.contrats_1
   }
  async getAllAsBuyer() {
     var contracts_2 : any =[];
-     axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
-   console.log("token buyer" + this.utilisateur.getUser().accessToken); 
-   console.log('id' + this.utilisateur.getUser().id);
-   await this.api.get("/contrat/listAsBuyer/" + this.utilisateur.getUser().id).then(
+   await this.api.get("/contrat/listAsBuyer/" + this.utilisateur.getUser().id, {
+    headers: {
+    'Authorization': this.utilisateur.getUser().accessToken
+    }
+  }).then(
             (response) => {
               this.contrats_2 = response.data
             }
@@ -130,7 +132,6 @@ export class ContratsService {
   localStorage.removeItem("seller");
     localStorage.removeItem("buyer");
     localStorage.removeItem("prop");
-  console.log("add success");
   }
   getNewContract() {
   return  this.newContract;

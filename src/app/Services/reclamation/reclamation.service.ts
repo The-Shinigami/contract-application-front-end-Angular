@@ -37,8 +37,7 @@ export class ReclamationService {
      axios.defaults.headers.common['Authorization'] = this.utilisateur.getUser().accessToken;
     await  this.api.post("/sendResponse",response)
       .then(
-        (response) => {
-          console.log(response.data)
+        () => {
       }
     )
   }
